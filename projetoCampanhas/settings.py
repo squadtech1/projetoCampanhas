@@ -54,7 +54,7 @@ ROOT_URLCONF = 'projetoCampanhas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'auth/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
