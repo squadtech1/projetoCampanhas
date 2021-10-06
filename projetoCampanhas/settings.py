@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'projetoCampanhas',
+    'accounts.apps.AccountsConfig',
+    'campanha',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,5 +130,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = 'campanhas'
+LOGIN_URL = "accounts/login"
+
+LOGIN_REDIRECT_URL = ''
+
+AUTH_USER_MODEL = "accounts.User"

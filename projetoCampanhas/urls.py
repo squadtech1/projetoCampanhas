@@ -5,5 +5,6 @@ from django.urls.conf import include
 urlpatterns = [
     path('', include("campanha.urls")),
     path('admin/', admin.site.urls),
-    path('account/', include("auth.urls")),
+    path('accounts/', include("accounts.urls")),
+    path('', include("campanha.urls")),
 ]
