@@ -2,10 +2,10 @@ from django.db import models
 
 class DadosCadastrais(models.Model):
 
-	nome = models.Charfield(
+	nome = models.CharField(
 		max_length=255,
 		null=False,
-		blank=False
+		blank=False,
 	)
 	
 	cpf = models.CharField(
@@ -21,10 +21,10 @@ class DadosCadastrais(models.Model):
 		blank=False
 	)
 		
-	email = models.Charfield(
+	email = models.CharField(
 		max_length=255,
 		null=False,
-		blank=False
+		blank=False,
 	)
 	
 	telefone = models.CharField(
