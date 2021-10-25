@@ -12,17 +12,10 @@ class DadosCadastrais(models.Model):
 
 class Doador(models.Model):
 
-	idDadosCadastrais = models.ForeignKey(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Id dados')
-	dadosCadastrais = models.OneToOneField(DadosCadastrais, on_delete=models.CASCADE,verbose_name= 'Relacionamento dados/doador')
+	dadosCadastrais = models.ForeignKey(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Id_dados')
+	dadosCadastrais = models.OneToOneField(DadosCadastrais, on_delete=models.CASCADE,verbose_name= 'Relacionamento_dados/doador')
 	doacao = models.CharField(max_length= 100)
 	quantidade = models.CharField(max_length= 10)
-
-class EntidadeOrganizadora(models.Model):
-
-	campanha = models.ForeignKey("Campanha")
-	idDadosCadastrais = models.ForeignKey(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Id dados')
-	dadosCadastrais = models.OneToOneField(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Relacionamento dados/entidade')
-	responsavel = models.CharField(max_length= 100)
 
 class Campanha(models.Model):
 
@@ -30,21 +23,27 @@ class Campanha(models.Model):
 	nome = models.CharField(max_length=255)
 	beneficiados = models.CharField(max_length=255)
 
+class EntidadeOrganizadora(models.Model):
+
+	campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, verbose_name= 'Campanha')
+	dadosCadastrais = models.ForeignKey(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Id_dados')
+	dadosCadastrais = models.OneToOneField(DadosCadastrais, on_delete=models.CASCADE, verbose_name= 'Relacionamento_dados/entidade')
+	responsavel = models.CharField(max_length= 100)
+
 class DuracaoCampanha(models.Model):
-	idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, verbose_name= 'Id campanha')
-	campanha = models.OneToOneField(Campanha, on_delete=models.CASCADE, verbose_name= 'Relacionamento Duração/Campanha')
+	campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, verbose_name= 'Id campanha')
+	campanha = models.OneToOneField(Campanha, on_delete=models.CASCADE, verbose_name= 'Relacionamento_Duração/Campanha')
 	inicio = models.DateField('inicio da campanha')
 	fim = models.DateField('fim da campanha')
 
 class Meta(models.Model):
-	idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, verbose_name= 'Id campanha')
+	campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, verbose_name= 'Id_campanha')
 	descricao = models.CharField(max_length=100)
 	status = models.CharField(max_length=30)
 
 class Composicao(models.Model):
-	idMeta = models.ForeignKey(Meta, on_delete=models.CASCADE, verbose_name= 'Id Meta')
+	meta = models.ForeignKey(Meta, on_delete=models.CASCADE, verbose_name= 'Id_Meta')
 	objeto = models.CharField('Item a ser doado', max_length=100)
 	quantidade = models.CharField(max_length=100)
 	status = models.CharField(max_length=30)
-	Observacao = models.CharField(max_length=300, null= True, blank= True)
-	
+	observacao = models.CharField(max_length=300, null= True, blank= True)
