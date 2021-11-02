@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Campanhas Ativas{% endblock %}
+
+
+
+    {% block content %}
+
+        <div>
+            <h1>Lista de todas as campanhas</h1>
+        </div>
+
+        <div>
+            <a href="{% url 'doar' %}" class="btn btn-danger">Doar Para Campanha</a>
+            <a href="{% url 'register' %}" class="btn btn-warning">Registrar-se</a>
+        </div>
+
+        <div><a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a></div>
+
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

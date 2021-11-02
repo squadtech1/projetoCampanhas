@@ -4,8 +4,6 @@ from django.db.models.deletion import CASCADE
 from django.db.models.expressions import F
 from django.utils.translation import gettext_lazy as _
 
-from campanha.models import Campanha
-
 
 class User(AbstractUser):
     

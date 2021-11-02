@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Doação{% endblock %}
+
+    {% block content %}
+
+        <h1>Fazer doação</h1>
+
+             <h6>- SUGESTÃO DE IMPLEMENTAÇÃO:<br>
+                - Lista de campanhas ativas [dados sucintos da campanha; botão "detalhar"]<br>
+                - Pesquisa de campanha: retorna lista de campanhas contendo os termos da pesquisa<br>
+                - Botão "detalhar": quadro com os detalhes da campanha escolhida, lista de itens solicitados,
+                 as respectivas quantidades com checkbox para realizar a doação e campo para marcar
+                 a quantidade que deseja doar.
+             </h6>
+
+        <a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a>
+
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

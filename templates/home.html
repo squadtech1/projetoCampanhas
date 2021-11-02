@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col">
+            <h2>Django!</h2>
+            <a href="{% url 'lista' %}" class="btn btn-info">Lista de Campanhas Ativas</a>
+            <a href="{% url 'gerenciar' %}" class="btn btn-warning">Criar ou Gerenciar Campanha</a>
+            <a href="{% url 'doar' %}" class="btn btn-danger">Doar Para Campanha</a>
+            <a href="{% url 'login' %}" class="btn btn-success">Login</a></p>
+        </div>
+
+        <div class="col-8">
+             <h1>Seja Bem-Vindo à Página Home!</h1>
+             <h6>Falta apontar para a página de login quando o usuário não estiver logado.<br>
+                 Quando o usuário está logado os links funcionam bem. Senão, dá erro.<br>
+                 O logout também não está implementado ainda.</h6>
+        </div>
+
+        <div class="col">
+           {% if user.is_authenticated %}
+                <p><h2>Olá, {{ user.username }}!</h2></p>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
