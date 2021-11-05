@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Gerenciar Campanha{% endblock %}
+
+    {% block content %}
+
+        <h1>Gerenciamento de Campanha</h1>
+        <a href="{% url 'criar' %}" class="btn btn-warning">Criar ou Alterar Campanha</a>
+         <a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a>
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

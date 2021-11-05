@@ -1,8 +1,11 @@
 from django.urls import path
-from django.urls.conf import include
-from django.views.generic import TemplateView
-from . import views
+from .views import criarCampanha
+from .views import fazerDoacao
+from .views import gerenciaCampanha
+
 
 urlpatterns = [
-    path('', views.campanhaView, name="campanhas"),
+    path('criacao/', criarCampanha, name='criar'),
+    path('doacao/', fazerDoacao, name='doar'),
+    path('gerencia-campanha/', gerenciaCampanha, name='gerenciar')
 ]
