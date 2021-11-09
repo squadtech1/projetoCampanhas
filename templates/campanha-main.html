@@ -5,11 +5,15 @@
     {% block content %}
 
         <h2>
-            Main works! <br>
-            Yeah, it works!
+            Main works!
         </h2>
 
-        <h3>Mas falta direcionar para um formulário de criação e edição de campanha que use o model "Campanha"...</h3>
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Salvar">
+        </form>
+
         <a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a>
 
     {% endblock %}
