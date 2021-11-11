@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+
+from campanha.models import Campanha, DonationItem
 from .forms import CampanhaForm, DonationForm
 
 
@@ -14,7 +16,23 @@ def criarCampanha(request):
     else:
         form = CampanhaForm(request.POST)
         if form.is_valid():
-            campanha = form.save()
+
+            currentCampanha = Campanha(
+                name = form.cleaned_data["name"], 
+                start = form.cleaned_data["start"], 
+                end = form.cleaned_data["end"], 
+                description = form.cleaned_data["description"], 
+                status = form.cleaned_data["status"], 
+                donor = form.cleaned_data["donor"], 
+                donee = form.cleaned_data["donee"])
+            currentCampanha.save()
+
+            donationItem = DonationItem(
+                item = form.cleaned_data["item"], 
+                volume = form.cleaned_data["volume"],
+                campanha = currentCampanha)
+            donationItem.save()
+
             form = CampanhaForm()
 
         context = {
