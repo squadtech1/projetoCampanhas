@@ -5,11 +5,22 @@ from .forms import CampanhaForm, DonationForm
 
 @login_required
 def criarCampanha(request):
-    form = CampanhaForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'campanha-main.html', context=context)
+    if request.method == "GET":
+        form = CampanhaForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'campanha-main.html', context=context)
+    else:
+        form = CampanhaForm(request.POST)
+        if form.is_valid():
+            campanha = form.save()
+            form = CampanhaForm()
+
+        context = {
+            'form': form
+        }
+        return render(request, 'campanha-main.html', context=context)
 
 
 @login_required
