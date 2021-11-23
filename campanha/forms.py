@@ -24,7 +24,6 @@ class CampanhaForm(forms.Form):
     volume = forms.IntegerField()
     #campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, related_name="campanha")
 
-
 class DonationForm(forms.ModelForm):
     class Meta:
         model = DonationItem

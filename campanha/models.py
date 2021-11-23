@@ -5,6 +5,11 @@ from django.utils.timezone import now
 
 
 class Campanha(models.Model):
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['name'], name='unique name')
+        ]
 
     class Status(models.TextChoices):
         ENABLED = "Enabled"
@@ -28,3 +33,6 @@ class DonationItem(models.Model):
     created_date = models.DateField(default=now)
     volume = models.IntegerField()
     campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, related_name="campanha")
+
+    def __str__(self):
+        return "Item: " + str(self.item) + " Volume: " + str(self.volume) + " Campanha: " + str(self.campanha.id)

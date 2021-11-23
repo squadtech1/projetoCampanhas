@@ -62,3 +62,9 @@ def form_campanha(request):
         'form': form
     }
     return render(request, 'campanha-main.html', context=context)
+
+#def getCampanhas(request):
+ #   campanhas = Campanha.objects.all()
+ #    donationItems = DonationItem.objects.all()
+ #   print(donationItems[0].campanha.id)
+ #   return
