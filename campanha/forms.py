@@ -1,6 +1,7 @@
 from django import forms
 from django.db import models
 from django.db.models import fields
+from django.forms import widgets
 
 from accounts.models import User
 from .models import Campanha, DonationItem
@@ -13,16 +14,37 @@ CAMPANHA_STATUS = (
 
 
 class CampanhaForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    start = forms.DateField(initial=now)
-    end = forms.DateField()
-    description = forms.CharField(max_length=50)
+
+    name = forms.CharField(
+        label="Nome"
+        )
+
+    start = forms.DateField(
+        initial=now,
+        label="Começo"
+        )
+
+    end = forms.DateField(
+        label="Fim"
+    )
+
+    description = forms.CharField(
+        max_length=50,
+        label='Descrição'
+        )
+
     status = forms.ChoiceField(choices = CAMPANHA_STATUS)
-    donor = forms.ModelChoiceField(queryset=User.objects.all().order_by("username"))
-    donee = forms.ModelChoiceField(queryset=User.objects.all().order_by("username"))
+
+    donee = forms.ModelChoiceField(
+        queryset=User.objects.all().order_by("username"),
+        label="Beneficiado"
+        )
     item = forms.CharField(max_length=50)
-    volume = forms.IntegerField()
-    #campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, related_name="campanha")
+
+    volume = forms.IntegerField(label='Quantidade')
+    
+    name.widget.attrs.update({'class':"nameField"})
+    start.widget.attrs.update({'class':'startField'})
 
 class DonationForm(forms.ModelForm):
     class Meta:

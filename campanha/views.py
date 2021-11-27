@@ -23,7 +23,7 @@ def criarCampanha(request):
                 end = form.cleaned_data["end"], 
                 description = form.cleaned_data["description"], 
                 status = form.cleaned_data["status"], 
-                donor = form.cleaned_data["donor"], 
+                donor = request.user, 
                 donee = form.cleaned_data["donee"])
             currentCampanha.save()
 
