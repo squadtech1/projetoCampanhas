@@ -45,6 +45,12 @@ class CampanhaForm(forms.Form):
     
     name.widget.attrs.update({'class':"nameField"})
     start.widget.attrs.update({'class':'startField'})
+    end.widget.attrs.update({'class':'endField'})
+    description.widget.attrs.update({'class':'descriptionField'})
+    status.widget.attrs.update({'class':'statusField'})
+    donee.widget.attrs.update({'class':'doneeField'})
+    item.widget.attrs.update({'class':'itemField'})
+    volume.widget.attrs.update({'class':'volumeField'})
 
 class DonationForm(forms.ModelForm):
     class Meta:

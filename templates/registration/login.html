@@ -17,7 +17,7 @@
                     {{ form|crispy }}
 
                     <button type="submit" class="btn btn-primary btn-block loginBtn">Login</button>
-                    <p>Don't have an account? Create one <a href="accounts:register">here</a></p>
+                    <p>Não tem uma conta? Crie uma <a href="{% url 'accounts:register' %}">aqui</a></p>
                 </form>
             </div>
         </div>
