@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from campanha.models import Campanha
 
 
 def home(request):
@@ -6,4 +7,10 @@ def home(request):
 
 
 def listaCampanhas(request):
-    return render(request, 'lista-campanhas.html')
+    campanhas = Campanha.objects.all()
+    #donationItem = campanha.donationItem.all()
+    #print(donationItem)
+    context = {
+        'campanhas': campanhas
+    }
+    return render(request, 'lista-campanhas.html', context=context)

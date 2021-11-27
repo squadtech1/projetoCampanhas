@@ -10,10 +10,16 @@
             <h1>Lista de todas as campanhas</h1>
         </div>
 
+        {% for campanha in campanhas %}
+            {{ campanha.name }}
+        {% endfor %}
+
+        
+
         <div>
-            <a href="{% url 'doar' %}" class="btn btn-danger">Doar Para Campanha</a>
-            <a href="{% url 'register' %}" class="btn btn-warning">Registrar-se</a>
-            <a href="{% url 'campanhas'%}" class="btn btn-danger">Campanhas</a>
+            <a href="{% url 'campanha:doar' %}" class="btn btn-danger">Doar Para Campanha</a>
+            <a href="{% url 'accounts:register' %}" class="btn btn-warning">Registrar-se</a>
+            <a href="{% url 'campanha:campanhas'%}" class="btn btn-danger">Campanhas</a>
         </div>
 
         <div><a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a></div>

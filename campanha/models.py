@@ -32,7 +32,7 @@ class DonationItem(models.Model):
     item = models.CharField(max_length=50, blank=True, null=True)
     created_date = models.DateField(default=now)
     volume = models.IntegerField()
-    campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, related_name="campanha")
+    campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, related_name="donationItem")
 
     def __str__(self):
         return "Item: " + str(self.item) + " Volume: " + str(self.volume) + " Campanha: " + str(self.campanha.id)
