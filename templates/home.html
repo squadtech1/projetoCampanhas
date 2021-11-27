@@ -4,6 +4,26 @@
 
 {% block content %}
 
+
+
+<!-- Redirect to login -->
+
+  {% if user.is_authenticated %}
+    Hey {{user.username}}
+  {% else %}
+    <a href="{% url 'accounts:login' %}">Log In</a>
+  {% endif %}
+
+
+
+<!-- Log out -->
+
+{% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}?next=/home">Log out</a>
+  {% endif %}
+
+
+
     
   <section class="u-align-center-sm u-align-center-xs u-clearfix u-section-13" id="sec-ad4b">
     <div class="u-clearfix u-sheet u-sheet-1">

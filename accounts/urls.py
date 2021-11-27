@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from . import views
 
 
+app_name = "accounts"
 urlpatterns = [
     path('register/', views.SignUp.as_view(), name="register"),
     path('', include('django.contrib.auth.urls')),
