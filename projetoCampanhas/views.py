@@ -23,7 +23,7 @@ def doacoesRecebidas(request):
     context = {
         'campanhas': campanhas
     }
-    return render(request, 'lista-campanhas.html', context=context)
+    return render(request, 'doacoes-recebidas.html', context=context)
 
 def listaBeneficiados(request):
     beneficiados = User.objects.filter(role=User.Roles.DONEE)
@@ -31,3 +31,6 @@ def listaBeneficiados(request):
         'beneficiados': beneficiados
     }
     return render(request, 'lista-beneficiados.html', context=context)
+
+def saibaMais(request):  
+    return render(request, "saiba-mais.html")

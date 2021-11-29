@@ -9,6 +9,7 @@ urlpatterns = [
     path('minhas-campanhas/', listaCampanhas, name='minhas-campanhas'),
     path('doacoes-recebidas/', doacoesRecebidas, name='doacoes-recebidas'),
     path('lista-beneficiados/', listaBeneficiados, name='lista-beneficiados'),
+    path('saiba-mais', saibaMais, name="saiba-mais"),
     path('admin/', admin.site.urls),
     path('accounts/', include("accounts.urls")),
     path('campanha/', include("campanha.urls")),
