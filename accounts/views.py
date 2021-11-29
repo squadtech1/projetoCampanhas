@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'register.html'
+    success_url = reverse_lazy('accounts:login')
+    template_name = 'registration/register.html'
 
 

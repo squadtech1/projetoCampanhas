@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.db.models.deletion import PROTECT
+from django.db.models.deletion import CASCADE, PROTECT
 from django.utils.timezone import now
 
 
@@ -36,3 +36,7 @@ class DonationItem(models.Model):
 
     def __str__(self):
         return "Item: " + str(self.item) + " Volume: " + str(self.volume) + " Campanha: " + str(self.campanha.id)
+
+class Post(models.Model):
+    post = models.CharField(max_length=50, blank=True, null=True)
+    user = models.ForeignKey("accounts.User", on_delete=CASCADE,null=True, related_name="user")

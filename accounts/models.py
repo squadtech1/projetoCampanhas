@@ -20,3 +20,6 @@ class User(AbstractUser):
     cpf_cnpj = models.CharField(max_length=14, blank=True, null=True)
     street = models.CharField(max_length=50, blank=True, null=True)
     state = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return " Name: " + str(self.username) + "Id: " + str(self.id) + " UserType: " + str(self.role)
