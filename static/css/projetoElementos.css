@@ -182,7 +182,7 @@
 .u-section-2 .u-btn-2 {
   border-style: none none solid;
   font-weight: 700;
-  margin: 20px auto 0;
+  margin: 0px auto 0;
   padding: 0;
 }
 
@@ -218,7 +218,7 @@
 }
 
 .u-section-3 .u-sheet-1 {
-  min-height: 225px;
+  min-height: 15px;
 }
 
 .u-section-3 .u-shape-1 {
@@ -304,7 +304,7 @@
 
 @media (max-width: 1199px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 227px;
+    min-height: 15px;
   }
 
   .u-section-3 .u-shape-1 {
@@ -343,7 +343,7 @@
 
 @media (max-width: 767px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 268px;
+    min-height: 15px;
   }
 
   .u-section-3 .u-shape-1 {
@@ -360,7 +360,7 @@
 
 @media (max-width: 575px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 299px;
+    min-height: 15;
   }
 
   .u-section-3 .u-shape-1 {
