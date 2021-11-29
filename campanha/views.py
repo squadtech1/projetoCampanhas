@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 
 from campanha.models import Campanha, DonationItem
@@ -7,11 +7,12 @@ from .forms import CampanhaForm, DonationForm
 
 @login_required
 def criarCampanha(request):
-    if request.method == "GET":
-        form = CampanhaForm()
-        context = {
+    form = CampanhaForm()
+    context = {
             'form': form
         }
+
+    if request.method == "GET":   
         return render(request, 'criar-campanha.html', context=context)
     else:
         form = CampanhaForm(request.POST)
@@ -22,7 +23,7 @@ def criarCampanha(request):
                 start = form.cleaned_data["start"], 
                 end = form.cleaned_data["end"], 
                 description = form.cleaned_data["description"], 
-                status = form.cleaned_data["status"], 
+                status = Campanha.Status.ENABLED, 
                 donor = request.user, 
                 donee = form.cleaned_data["donee"])
             currentCampanha.save()
@@ -32,14 +33,47 @@ def criarCampanha(request):
                 volume = form.cleaned_data["volume"],
                 campanha = currentCampanha)
             donationItem.save()
+            return redirect('home')
 
-            form = CampanhaForm()
-
-        context = {
-            'form': form
-        }
         return render(request, 'criar-campanha.html', context=context)
 
+@login_required
+def editarCampanha(request, id):
+    campanha = get_object_or_404(Campanha, pk=id)
+    initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee}
+    form = CampanhaForm(initial=initial)
+    if(request.method == 'POST'):
+        form = CampanhaForm(request.POST, initial=initial)
+        
+        if(form.is_valid()):
+            campanha = Campanha(
+                id = campanha.id,
+                name = form.cleaned_data["name"], 
+                start = form.cleaned_data["start"], 
+                end = form.cleaned_data["end"], 
+                description = form.cleaned_data["description"], 
+                status = form.cleaned_data["status"], 
+                donor = request.user, 
+                donee = form.cleaned_data["donee"])
+
+            campanha.save()
+            
+            return redirect('home')
+        else:
+            return render(request, 'editar-campanha.html', {'form': form, 'campanha' : campanha})
+    elif(request.method == 'GET'):
+        return render(request, 'editar-campanha.html', {'form': form, 'campanha' : campanha})
+
+@login_required
+def deletarCampanha(request, id):
+	campanha = get_object_or_404(Campanha, pk=id)
+
+	if request.method == 'POST':
+		campanha.delete()
+		return redirect('home')
+
+	context = {'campanha':campanha}
+	return render(request, 'deletar-campanha.html', context)
 
 @login_required
 def fazerDoacao(request):

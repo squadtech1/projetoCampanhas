@@ -5,6 +5,8 @@ from .views import *
 app_name = 'campanha'
 urlpatterns = [
     path('criacao/', criarCampanha, name='criar'),
+    path('editar/<int:id>/', editarCampanha, name='editar'),
+    path('deletar/<int:id>/', deletarCampanha, name='deletar'),
     path('doacao/', fazerDoacao, name='doar'),
     path('gerencia-campanha/', gerenciaCampanha, name='gerenciar'),
     path('campanhas/', getCampanhas, name='campanhas')

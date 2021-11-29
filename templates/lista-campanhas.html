@@ -11,7 +11,12 @@
         </div>
 
         {% for campanha in campanhas %}
+        <div>
             {{ campanha.name }}
+            <a href="{% url 'campanha:editar' campanha.id %}">Editar</a>
+            <a href="{% url 'campanha:deletar' campanha.id %}">Deletar</a><br>
+        </div>
+           
         {% endfor %}
 
         
