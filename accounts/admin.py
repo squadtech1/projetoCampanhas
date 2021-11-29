@@ -9,4 +9,4 @@ class UserAdmin(authAdmin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     model = User
-    fieldsets = authAdmin.UserAdmin.fieldsets + ((None, {"fields": ("role", "cpf_cnpj", "entity_type", "street", "state")}),)
+    fieldsets = authAdmin.UserAdmin.fieldsets + ((None, {"fields": ("role", "cpf_cnpj", "entity_type", "street", "state", "description")}),)

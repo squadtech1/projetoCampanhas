@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Campanha, DonationItem
+from .models import Campanha, DonationItem, Post, DoneeNeed
 
 
 class DonationItemInline(admin.TabularInline):
@@ -10,3 +10,5 @@ class CampanhaAdmin(admin.ModelAdmin):
 
 admin.site.register(Campanha, CampanhaAdmin)
 admin.site.register(DonationItem)
+admin.site.register(Post)
+admin.site.register(DoneeNeed)
