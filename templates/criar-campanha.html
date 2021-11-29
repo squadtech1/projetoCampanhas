@@ -8,8 +8,7 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="fieldWrapper">
-                {{ form.name.label_tag }}
-                {{ form.name }}
+                {{ form.as_p }}
             </div>
             <input type="submit" value="Salvar">
         </form>

@@ -12,7 +12,7 @@ def criarCampanha(request):
         context = {
             'form': form
         }
-        return render(request, 'campanha-main.html', context=context)
+        return render(request, 'criar-campanha.html', context=context)
     else:
         form = CampanhaForm(request.POST)
         if form.is_valid():
@@ -38,7 +38,7 @@ def criarCampanha(request):
         context = {
             'form': form
         }
-        return render(request, 'campanha-main.html', context=context)
+        return render(request, 'criar-campanha.html', context=context)
 
 
 @login_required
@@ -61,7 +61,7 @@ def form_campanha(request):
     context = {
         'form': form
     }
-    return render(request, 'campanha-main.html', context=context)
+    return render(request, 'criar-campanha.html', context=context)
 
 def getCampanhas(request):
     campanhas = Campanha.objects.all()
