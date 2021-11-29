@@ -153,7 +153,9 @@ C160,148.8,156.7,145.5,152.7,145.5z"></path>
 
          <!-- BOTÕES EM DESTAQUE ABAIXO DA ILUSTRAÇÃO -->
           
+         {% if user.role == 'Donor'%}
          <a href="{% url 'campanha:criar' %}" class="u-align-center-xs u-border-none u-btn u-button-style u-hover-palette-1-light-1 u-palette-1-base u-btn-1">QUERO DOAR</a>
+         {% endif %}
           
           <a href="{% url 'lista-beneficiados' %}" class="u-border-none u-btn u-button-style u-hover-palette-2-light-1 u-palette-2-base u-btn-2">VER BENEFICIADOS</a>
 
