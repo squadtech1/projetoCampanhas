@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}DoaAção | Cadastro{% endblock %}
+
+{% block content %}
+
+<section class="u-clearfix u-palette-2-base u-section-3" id="sec-72ac">
+    <div class="u-clearfix u-sheet u-sheet-1"></div>
+</section>
+
+<form method="post">
+
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+
+    <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="FORM">
+        <br>
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <br>
+            <div class="u-align-center u-container-style u-group u-radius-5 u-shape-round u-white u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h3 class="u-text u-text-default u-text-1">CADASTRE-SE</h3>
+                    <p class="u-text u-text-2">
+                        Para <strong>Doar</strong> ou <strong>Criar uma Campanha</strong>,<br>é necessário o cadastro em
+                        nosso sistema!
+                    </p>
+
+                    {% if form.errors %}
+                    <section class="u-clearfix u-section-10" id="">
+                        <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+                            <div class="u-clearfix u-palette-1-light-3 u-layout-wrap ">
+                                <div class="u-layout">
+                                    <div
+                                        class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                                            <h4>Dados Incorretos</h4>
+                                            <p class="u-align-left">O nome de usuário pode já estar em uso, ou a senha não respeita as regras abaixo:</p>
+                                            <small class="u-align-left">
+                                                <ul>
+                                                    <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
+                                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                                    <li>Sua senha não pode ser uma senha comumente utilizada.</li>
+                                                    <li>Sua senha não pode ser inteiramente numérica.</li>
+                                                </ul>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br>
+                    {% endif %}
+
+
+                    <div id="div_id_username" class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username"
+                            autofocus="" placeholder="Usuário" required id="id_username"
+                            class="u-grey-10 u-input u-input-rectangle">
+                    </div>
+                    <small class="u-align-left">
+                        <ul>
+                            <li>O usuário deve 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.</li>                           
+                        </ul>
+                    </small>
+                    <br>
+                    <div class="u-form-select-wrapper">
+                        <select name="role" class="u-grey-10 u-input u-input-rectangle" id="id_role" required>
+                            <option value="" disabled selected>Tipo do Cadastro</option>
+                            <option value="Donor">Doador</option>
+                            <option value="Donee">Entidade Assistencial</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+                    <br>
+                    <div class="u-form-select-wrapper">
+                        <select name="entity_type" class="u-grey-10 u-input u-input-rectangle" id="id_entity_type"
+                            required>
+                            <option value="" disabled selected>Pessoa Física ou Jurídica?</option>
+                            <option value="Fisica">Pessoa Física</option>
+                            <option value="Juridica">Pessoa Jurídica</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+                    <br>
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="text" name="cpf_cnpj" maxlength="14" id="id_cpf_cnpj" placeholder="CPF ou CNPJ"
+                            required class="u-grey-10 u-input u-input-rectangle">
+                    </div>
+                    <br>
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="email" name="email" maxlength="254" placeholder="E-mail" id="id_email" required
+                            class="u-grey-10 u-input u-input-rectangle">
+                    </div>
+                    <br>
+
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="text" name="street" maxlength="50" placeholder="Endereço" id="id_street" required
+                            class="u-grey-10 u-input u-input-rectangle">
+                    </div>
+                    <br>
+                    <div class="u-form-select-wrapper">
+                        <select id="id_state" name="state" required class="u-grey-10 u-input u-input-rectangle">
+                            <option value="" disabled selected>Estado</option>
+                            <option value="Acre">Acre</option>
+                            <option value="Alagoas">Alagoas</option>
+                            <option value="Amapá">Amapá</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Bahia">Bahia</option>
+                            <option value="Ceará">Ceará</option>
+                            <option value="Distrito Federal">Distrito Federal</option>
+                            <option value="Espírito Santo">Espírito Santo</option>
+                            <option value="Goiás">Goiás</option>
+                            <option value="Maranhão">Maranhão</option>
+                            <option value="Mato Grosso">Mato Grosso</option>
+                            <option value="Minas Gerais">Minas Gerais</option>
+                            <option value="Pará">Pará</option>
+                            <option value="Paraíba">Paraíba</option>
+                            <option value="Paraná">Paraná</option>
+                            <option value="Pernambuco">Pernambuco</option>
+                            <option value="Piauí">Piauí</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                            <option value="Rio GRande do Sul">Rio GRande do Sul</option>
+                            <option value="Rondônia">Rondônia</option>
+                            <option value="Roraima">Roraima</option>
+                            <option value="Santa Catarina">Santa Catarina</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Sergipe">Sergipe</option>
+                            <option value="Tocantins">Tocantins</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+                    <br>
+
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="password" autocomplete="new-password" placeholder="Senha" name="password1"
+                            id="id_password1" required class="u-grey-10 u-input u-input-rectangle" required>
+                    </div>
+                    <small class="u-align-left">
+                        <ul>
+                            <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
+                            <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                            <li>Sua senha não pode ser uma senha comumente utilizada.</li>
+                            <li>Sua senha não pode ser inteiramente numérica.</li>
+                        </ul>
+                    </small>
+                    <br>
+
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input type="password" required id="id_password2" name="password2" autocomplete="new-password"
+                            placeholder="Confirmação de Senha" class="u-grey-10 u-input u-input-rectangle" required>
+                    </div>
+                    <br>
+                    <div class="u-align-center u-form-group u-form-submit">
+                        <button type="submit"
+                            class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">CADASTRAR</button>
+                    </div>
+                    <br>
+                    <h5>Já possui cadastro no DoaAção?</h5>
+                    <a href="{% url 'accounts:login' %}"
+                        class="u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-login-control u-login-forgot-password u-none u-text-black u-text-hover-palette-2-base u-btn-2">
+                        CLIQUE AQUI
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+    </section>
+</form>
+
+{% endblock %}
