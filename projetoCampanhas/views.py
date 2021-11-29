@@ -15,6 +15,14 @@ def listaCampanhas(request):
     }
     return render(request, 'lista-campanhas.html', context=context)
 
+def doacoesRecebidas(request):
+    user = request.user
+    campanhas = Campanha.objects.filter(donee_id=user.id)
+    context = {
+        'campanhas': campanhas
+    }
+    return render(request, 'lista-campanhas.html', context=context)
+
 def listaBeneficiados(request):
     beneficiados = User.objects.filter(role=User.Roles.DONEE)
     print(beneficiados[0])

@@ -79,6 +79,15 @@
 
             {% endif %}
 
+            {% if user.role == 'Donor' %}
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas</a>
+            </li>
+            {% else %}
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'doacoes-recebidas' %}" style="padding: 10px 0px;">Doações Recebidas</a>
+            </li>
+            {% endif %}
             <!-- 
             - Links Visíveis no Desktop            
             - Repetir <li> abaixo para cada item do menu

@@ -7,6 +7,7 @@ urlpatterns = [
     path('', home),
     path('home/', home, name='home'),
     path('minhas-campanhas/', listaCampanhas, name='minhas-campanhas'),
+    path('doacoes-recebidas/', doacoesRecebidas, name='doacoes-recebidas'),
     path('lista-beneficiados/', listaBeneficiados, name='lista-beneficiados'),
     path('admin/', admin.site.urls),
     path('accounts/', include("accounts.urls")),

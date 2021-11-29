@@ -36,7 +36,7 @@ class CampanhaForm(forms.Form):
     status = forms.ChoiceField(choices = CAMPANHA_STATUS)
 
     donee = forms.ModelChoiceField(
-        queryset=User.objects.all().order_by("username"),
+        queryset=User.objects.filter(role="Donee").order_by("username"),
         label="Beneficiado"
         )
     item = forms.CharField(max_length=50)

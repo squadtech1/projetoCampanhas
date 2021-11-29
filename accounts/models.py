@@ -22,4 +22,5 @@ class User(AbstractUser):
     state = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
-        return " Name: " + str(self.username) + "Id: " + str(self.id) + " UserType: " + str(self.role)
+        return str(self.username)
+        # return " Name: " + str(self.username) + "Id: " + str(self.id) + " UserType: " + str(self.role)
