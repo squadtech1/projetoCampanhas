@@ -9,7 +9,8 @@ from django.utils.timezone import now
 
 CAMPANHA_STATUS = (
     ("ENABLED", "Enabled"),
-    ("DISABLED", "Disabled")
+    ("DISABLED", "Disabled"),
+     ("PENDING_DONEE_CONFIRMATION", "Pending Donee Confirmation")
 )
 
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path('deletar/<int:id>/', deletarCampanha, name='deletar'),
     path('doacao/', fazerDoacao, name='doar'),
     path('gerencia-campanha/', gerenciaCampanha, name='gerenciar'),
-    path('campanhas/', getCampanhas, name='campanhas')
+    path('campanhas/', getCampanhas, name='campanhas'),
+    path('donee-decision/<int:id>/<int:bool>', doneeDecision, name = 'donee-decision')
     # path('form-campanha/', form_campanha, name='form-campanha')
 ]

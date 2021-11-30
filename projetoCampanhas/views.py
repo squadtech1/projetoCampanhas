@@ -20,6 +20,7 @@ def listaCampanhas(request):
 def doacoesRecebidas(request):
     user = request.user
     campanhas = Campanha.objects.filter(donee_id=user.id)
+    print(campanhas)
     context = {
         'campanhas': campanhas
     }

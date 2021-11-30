@@ -85,6 +85,36 @@ def deletarCampanha(request, id):
 	return render(request, 'deletar-campanha.html', context)
 
 @login_required
+def doneeDecision(request, id, bool):
+    campanha = get_object_or_404(Campanha, pk=id)
+    if(bool == 1):
+         campanha = Campanha(
+                id = campanha.id,
+                name = campanha.name, 
+                start = campanha.start, 
+                end = campanha.end, 
+                description = campanha.description, 
+                status = Campanha.Status.PENDING_DONEE_CONFIRMATION,
+                donor = campanha.donor, 
+                donee = campanha.donee
+             )
+         campanha.save()
+    else:
+        campanha = Campanha(
+                id = campanha.id,
+                name = campanha.name, 
+                start = campanha.start, 
+                end = campanha.end, 
+                description = campanha.description, 
+                status = Campanha.Status.DISABLED,
+                donor = campanha.donor.id, 
+                donee = campanha.donee.id
+             )
+        campanha.save()
+ 
+    return redirect('home')
+
+@login_required
 def fazerDoacao(request):
     form = DonationForm()
     context = {

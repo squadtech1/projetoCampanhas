@@ -10,8 +10,12 @@
             <h1>Lista de todas as campanhas</h1>
         </div>
 
-        {% for campanha in campanha %}
-            {{ campanha.name }}
+        {% for campanha in campanhas %}
+        <div class="container">
+            {{ campanha.name }} 
+            <a href="{% url 'campanha:donee-decision' id=campanha.id bool=1 %}">confirmar</a>
+            <a href="{% url 'campanha:donee-decision' id=campanha.id bool=0 %}">cancelar</a>
+        </div>
         {% endfor %}
 
         
