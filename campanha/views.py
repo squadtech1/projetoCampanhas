@@ -40,7 +40,10 @@ def criarCampanha(request):
 @login_required
 def editarCampanha(request, id):
     campanha = get_object_or_404(Campanha, pk=id)
-    initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee}
+    donationItem = get_object_or_404(DonationItem, campanha_id=campanha.id)
+    #donationItem = DonationItem.objects.filter(campanha_id = campanha.id)
+    print(donationItem)
+    initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee, 'item':donationItem.item, 'volume':donationItem.volume}
     form = CampanhaForm(initial=initial)
     if(request.method == 'POST'):
         form = CampanhaForm(request.POST, initial=initial)
@@ -55,8 +58,14 @@ def editarCampanha(request, id):
                 status = form.cleaned_data["status"], 
                 donor = request.user, 
                 donee = form.cleaned_data["donee"])
-
             campanha.save()
+
+            donationItem = DonationItem(
+                id = donationItem.id,
+                item = form.cleaned_data["item"], 
+                volume = form.cleaned_data["volume"],
+                campanha = campanha)
+            donationItem.save()
             
             return redirect('home')
         else:
