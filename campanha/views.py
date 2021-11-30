@@ -23,7 +23,7 @@ def criarCampanha(request):
                 start = form.cleaned_data["start"], 
                 end = form.cleaned_data["end"], 
                 description = form.cleaned_data["description"], 
-                status = Campanha.Status.ENABLED, 
+                status = Campanha.Status.PENDING_DONEE_CONFIRMATION, 
                 donor = request.user, 
                 donee = form.cleaned_data["donee"])
             currentCampanha.save()
@@ -40,9 +40,8 @@ def criarCampanha(request):
 @login_required
 def editarCampanha(request, id):
     campanha = get_object_or_404(Campanha, pk=id)
+    print(campanha.status)
     donationItem = get_object_or_404(DonationItem, campanha_id=campanha.id)
-    #donationItem = DonationItem.objects.filter(campanha_id = campanha.id)
-    print(donationItem)
     initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee, 'item':donationItem.item, 'volume':donationItem.volume}
     form = CampanhaForm(initial=initial)
     if(request.method == 'POST'):
@@ -55,7 +54,7 @@ def editarCampanha(request, id):
                 start = form.cleaned_data["start"], 
                 end = form.cleaned_data["end"], 
                 description = form.cleaned_data["description"], 
-                status = form.cleaned_data["status"], 
+                status = campanha.status, 
                 donor = request.user, 
                 donee = form.cleaned_data["donee"])
             campanha.save()
@@ -94,7 +93,7 @@ def doneeDecision(request, id, bool):
                 start = campanha.start, 
                 end = campanha.end, 
                 description = campanha.description, 
-                status = Campanha.Status.PENDING_DONEE_CONFIRMATION,
+                status = Campanha.Status.ENABLED,
                 donor = campanha.donor, 
                 donee = campanha.donee
              )

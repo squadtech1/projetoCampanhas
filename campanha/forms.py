@@ -7,12 +7,13 @@ from accounts.models import User
 from .models import Campanha, DonationItem
 from django.utils.timezone import now
 
+'''
 CAMPANHA_STATUS = (
     ("ENABLED", "Enabled"),
     ("DISABLED", "Disabled"),
      ("PENDING_DONEE_CONFIRMATION", "Pending Donee Confirmation")
 )
-
+'''
 
 class CampanhaForm(forms.Form):
 
@@ -34,7 +35,7 @@ class CampanhaForm(forms.Form):
         label='Descrição'
         )
 
-    status = forms.ChoiceField(choices = CAMPANHA_STATUS)
+    #status = forms.ChoiceField(choices = CAMPANHA_STATUS)
 
     donee = forms.ModelChoiceField(
         queryset=User.objects.filter(role="Donee").order_by("username"),
@@ -48,7 +49,7 @@ class CampanhaForm(forms.Form):
     start.widget.attrs.update({'class':'startField'})
     end.widget.attrs.update({'class':'endField'})
     description.widget.attrs.update({'class':'descriptionField'})
-    status.widget.attrs.update({'class':'statusField'})
+    #status.widget.attrs.update({'class':'statusField'})
     donee.widget.attrs.update({'class':'doneeField'})
     item.widget.attrs.update({'class':'itemField'})
     volume.widget.attrs.update({'class':'volumeField'})
