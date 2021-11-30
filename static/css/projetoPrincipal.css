@@ -7168,7 +7168,7 @@ blockquote.u-text.u-indent-31 {
   padding-left: 31px;
 }
 .u-text.u-spacing-30 li {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .u-text.u-indent-30,
 .u-text.u-indent-30 ul,
@@ -7177,13 +7177,13 @@ blockquote.u-text.u-indent-31 {
 }
 .u-spacing-30.u-price-wrapper > div + div,
 .u-spacing-30 .u-social-url + .u-social-url {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .u-spacing-30.u-icon,
 .u-spacing-30.u-search-icon,
 .u-spacing-30.u-gallery-nav,
 .u-spacing-30.u-carousel-control {
-  padding: 30px;
+  padding: 20px;
 }
 blockquote.u-text.u-indent-30 {
   padding-left: 30px;
@@ -8103,7 +8103,7 @@ ul.u-text li:last-child {
 }
 .u-vertical-spacing.u-spacing-30 > li:not(:last-child) {
   margin-right: 0 !important;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .u-vertical-spacing.u-spacing-29 > li:not(:last-child) {
   margin-right: 0 !important;
@@ -13695,7 +13695,7 @@ section.u-image,
 .u-sidebar.u-spacing-30,
 .u-position.u-spacing-30,
 .u-block-content.u-spacing-30 {
-  padding: 30px;
+  padding: 20px;
 }
 .u-block-header.u-v-spacing-30 {
   padding-top: 30px;
@@ -16264,10 +16264,10 @@ div.u-video,
   margin: 31px 0 0 0 !important;
 }
 .u-spacing-30:not(.u-text) > li:not(:last-child) {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 .u-spacing-30 > .u-accordion-item + .u-accordion-item {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .u-h-spacing-30 .u-nav-link {
   padding-left: 30px;
@@ -16278,7 +16278,7 @@ div.u-video,
   padding-bottom: 30px;
 }
 .u-enable-responsive .u-spacing-30 > li + li {
-  margin: 30px 0 0 0 !important;
+  margin: 20px 0 0 0 !important;
 }
 .u-spacing-29:not(.u-text) > li:not(:last-child) {
   margin-right: 29px;
@@ -35369,7 +35369,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-nav-1 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0px;
   font-weight: 700;
   text-transform: uppercase;

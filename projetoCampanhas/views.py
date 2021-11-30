@@ -35,3 +35,6 @@ def listaBeneficiados(request):
 
 def saibaMais(request):  
     return render(request, "saiba-mais.html")
+
+def contato(request):  
+    return render(request, "contato.html")

@@ -77,6 +77,10 @@
                 href="{% url 'accounts:login' %}" style="padding: 10px 0px;">Entrar</a>
             </li>
 
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'saiba-mais' %}" style="padding: 10px 0px;">Saiba Mais</a>
+          </li>
+
             {% endif %}
 
             {% if user.role == 'Donor' %}
@@ -89,6 +93,10 @@
               href="{% url 'doacoes-recebidas' %}" style="padding: 10px 0px;">Doações Recebidas</a>
             </li>
             {% endif %}
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'contato' %}" style="padding: 10px 0px;">Contato</a>
+          </li>
+
             <!-- 
             - Links Visíveis no Desktop            
             - Repetir <li> abaixo para cada item do menu
@@ -129,20 +137,26 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 0px;">Olá,
                     {{user.username}}</a>
                 </li>
-
-                <li class="u-nav-item">
-                  <a class="u-button-style u-nav-link" href="{% url 'accounts:logout' %}?next=/home" style="padding: 10px 0px;">Logout</a>
-                </li>
-
                 {% else %}
-
                 <li class="u-nav-item">
                   <a class="u-button-style u-nav-link" href="{% url 'accounts:login' %}"
                     style="padding: 10px 0px;">Entrar</a>
                 </li>
-
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="{% url 'saiba-mais' %}" style="padding: 10px 0px;">Saiba Mais</a>
+                </li>
                 {% endif %}
 
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="{% url 'contato' %}" style="padding: 10px 0px;">Contato</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link u-palette-2-light-1 u-radius-7" href="{% url 'accounts:logout' %}?next=/home" style="padding: 10px 0px;">Logout</a>
+                </li>
+                {% else %}
+                {% endif %}
 
               </ul>
             </div>
