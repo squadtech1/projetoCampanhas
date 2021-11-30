@@ -3,13 +3,17 @@ from django.contrib.auth.decorators import login_required
 
 from campanha.models import Campanha, DonationItem
 from .forms import CampanhaForm, DonationForm
+from accounts.models import User
 
 
 @login_required
 def criarCampanha(request):
     form = CampanhaForm()
+    beneficiados = User.objects.filter(role=User.Roles.DONEE)
+    print(beneficiados)
     context = {
-            'form': form
+            'form': form,
+            'beneficiados':beneficiados
         }
 
     if request.method == "GET":   

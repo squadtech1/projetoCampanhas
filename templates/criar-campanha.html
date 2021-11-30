@@ -259,16 +259,9 @@ C80.2,0,80.1,0,80,0z"></path>
                                             <select id="id_donee" name="donee"
                                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                                                 <option value="" disabled selected>Para quem você quer doar?</option>
-                                                <option value="3">Alex</option>
-                                                <option value="9">PedroBeneficiado</option>
-                                                <option value="5">andre</option>
-                                                <option value="4">fakealex</option>
-                                                <option value="6">sandro</option>
-                                                <option value="7">sandro2</option>
-                                                <option value="8">sandro3</option>
-                                                <option value="1">squadtech</option>
-                                                <option value="13">userentidade</option>
-                                                <option value="2">vitor</option>
+                                                {% for beneficiado in beneficiados %}
+                                                    <option value="{{beneficiado}}">{{beneficiado.username}}</option>
+                                                {% endfor %}
                                             </select>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
                                                 class="u-caret">
