@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar e Editar Campanha{% endblock %}
+
+    {% block content %}
+
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.as_p }}
+            </div>
+            <input type="submit" value="Atualizar Campanha">
+        </form>
+
+        <a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a>
+
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
