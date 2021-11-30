@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Campanhas Ativas{% endblock %}
+
+
+
+    {% block content %}
+
+        <div>
+            <h1>Lista de todas as campanhas</h1>
+        </div>
+
+        {% for campanha in campanhas %}
+        <div class="container">
+            {{ campanha.name }} 
+            <a href="{% url 'campanha:donee-decision' id=campanha.id bool=1 %}">confirmar</a>
+            <a href="{% url 'campanha:donee-decision' id=campanha.id bool=0 %}">cancelar</a>
+        </div>
+        {% endfor %}
+
+        
+
+        <div>
+            <a href="{% url 'campanha:doar' %}" class="btn btn-danger">Doar Para Campanha</a>
+            <a href="{% url 'accounts:register' %}" class="btn btn-warning">Registrar-se</a>
+            <a href="{% url 'campanha:campanhas'%}" class="btn btn-danger">Campanhas</a>
+        </div>
+
+        <div><a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a></div>
+
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

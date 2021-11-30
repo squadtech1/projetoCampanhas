@@ -1,8 +1,15 @@
 from django.urls import path
-from django.urls.conf import include
-from django.views.generic import TemplateView
-from . import views
+from .views import *
+# from .views import form_campanha
 
+app_name = 'campanha'
 urlpatterns = [
-    path('', views.campanhaView, name="campanhas"),
+    path('criacao/', criarCampanha, name='criar'),
+    path('editar/<int:id>/', editarCampanha, name='editar'),
+    path('deletar/<int:id>/', deletarCampanha, name='deletar'),
+    path('doacao/', fazerDoacao, name='doar'),
+    path('gerencia-campanha/', gerenciaCampanha, name='gerenciar'),
+    path('campanhas/', getCampanhas, name='campanhas'),
+    path('donee-decision/<int:id>/<int:bool>', doneeDecision, name = 'donee-decision')
+    # path('form-campanha/', form_campanha, name='form-campanha')
 ]

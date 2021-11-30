@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <link rel="stylesheet" href="/static/css/projetoPrincipal.css" media="screen">
+  <link rel="stylesheet" href="/static/css/projetoElementos.css" media="screen">
+  <script class="u-script" type="text/javascript" src="/static/javascript/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="/static/javascript/projetoElementos.js" defer=""></script>
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Mitr:200,300,400,500,600,700">
+  <script type="application/ld+json">
+      {"@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "DoaAção",
+      "logo": "/static/images/doaacao_logo_fund_claro_horizontal.svg"}
+    </script>
+
+  <meta name="theme-color" content="#9a3585">
+  <meta property="og:title" content="projeto">
+  <meta property="og:type" content="website">
+</head>
+
+<!-- MENU DESKTOP ---------------------- -->
+
+<body class="u-body">
+  <header class="u-clearfix u-header u-header" id="sec-d9ff">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <nav class="u-menu u-menu-one-level u-menu-open-right u-offcanvas u-offcanvas-shift u-menu-1"
+        data-responsive-from="MD">
+        <div class="menu-collapse"
+          style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
+          <a class="u-button-style u-custom-active-border-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-2-base"
+            href="{% url 'home' %}">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </symbol>
+              </defs>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
+
+
+            <!-- Redirect to login -->
+
+
+
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+                href="/home" style="padding: 10px 0px;">Home</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+                style="padding: 10px 0px;">Olá, {{user.username}}</a>
+            </li>
+
+            {% else %}
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+                href="{% url 'accounts:login' %}" style="padding: 10px 0px;">Entrar</a>
+            </li>
+
+            {% endif %}
+
+            {% if user.role == 'Donor' %}
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas</a>
+            </li>
+            {% endif %}
+            {% if user.role == 'Donee' %}
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+              href="{% url 'doacoes-recebidas' %}" style="padding: 10px 0px;">Doações Recebidas</a>
+            </li>
+            {% endif %}
+            <!-- 
+            - Links Visíveis no Desktop            
+            - Repetir <li> abaixo para cada item do menu
+            
+
+            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
+                href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas</a>
+            </li>
+            -->
+
+          </ul>
+        </div>
+
+        <!-- MENU MOBILE ---------------------- -->
+
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-container-style u-inner-container-layout u-opacity u-opacity-95 u-palette-2-base u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul
+                class="u-align-center u-nav u-popupmenu-items u-spacing-0 u-text-hover-palette-3-light-1 u-unstyled u-nav-2">
+
+                <!-- 
+                - Links Visíveis no MOBILE            
+                - Repetir <li> abaixo para cada item do menu
+
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="{% url 'home' %}" style="padding: 10px 0px;">Link</a>
+                </li>
+
+                -->
+
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="/home" style="padding: 10px 0px;">Home</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 0px;">Olá,
+                    {{user.username}}</a>
+                </li>
+
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="{% url 'accounts:logout' %}?next=/home" style="padding: 10px 0px;">Logout</a>
+                </li>
+
+                {% else %}
+
+                <li class="u-nav-item">
+                  <a class="u-button-style u-nav-link" href="{% url 'accounts:login' %}"
+                    style="padding: 10px 0px;">Entrar</a>
+                </li>
+
+                {% endif %}
+
+
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-85"></div>
+        </div>
+      </nav>
+      <a href="{% url 'home' %}" class="u-image u-logo u-image-1" data-image-width="342" data-image-height="94">
+        <img src="/static/images/doaacao_logo_fund_claro_horizontal.svg" class="u-logo-image u-logo-image-1">
+      </a>
+
+      <!-- Botão em Destaque na Visualização Desktop, canto superior direito ---------------------- -->
+
+      <!-- Log out -->
+      {% if user.is_authenticated %}
+      <a href="{% url 'accounts:logout' %}?next=/home"
+        class="u-border-none u-btn u-button-style u-hidden-md u-hidden-sm u-hidden-xs u-hover-palette-2-light-2 u-palette-2-base u-btn-1">
+        LOGOUT</a>
+      {% else %}
+      <a href="{% url 'accounts:register' %}"
+        class="u-border-none u-btn u-button-style u-hidden-md u-hidden-sm u-hidden-xs u-hover-palette-2-light-2 u-palette-2-base u-btn-1">
+        FAÇA PARTE</a>
+      {% endif %}
+
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- RODAPÉ --------------------------- -->
+  <footer class="u-align-center u-clearfix u-custom-color-6 u-footer u-footer" id="sec-0fc3">
+    <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+      <a href="{% url 'home' %}" class="u-image u-logo u-image-1" data-image-width="197" data-image-height="85">
+        <img src="/static/images/doaacao_logo_fund_escuro_vertical.svg" class="u-logo-image u-logo-image-1">
+      </a>
+      <img class="u-align-center-xs u-image u-image-default u-preserve-proportions u-image-2"
+        src="/static/images/squadtech.svg" alt="" data-image-width="609" data-image-height="59">
+    </div>
+  </footer>
+
+</body>
+
+</html>

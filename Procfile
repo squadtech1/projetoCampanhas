@@ -1,0 +1,1 @@
+web: gunicorn projetoCampanhas.wsgi --log-file -
