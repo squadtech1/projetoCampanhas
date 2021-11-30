@@ -4161,7 +4161,7 @@ textarea {
 }
 ::-webkit-input-placeholder {
   color: inherit;
-  opacity: 0.54;
+  opacity: 0.8;
 }
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
@@ -5498,7 +5498,7 @@ a {
   font-weight: normal;
 }
 .u-form ::placeholder {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .u-form :-ms-input-placeholder {
   opacity: 1;
@@ -35081,32 +35081,32 @@ a.u-link.u-text-hover-grey-90:hover {
         font-weight: 400;
         font-size: 1.875rem;
         line-height: 1.2;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
         }
         h4
         {
         font-weight: 400;
         font-size: 1.5rem;
         line-height: 1.2;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10;
+        margin-bottom: 0px;
         }
         h5
         {
         font-weight: 400;
         font-size: 1.25rem;
         line-height: 1.2;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         }
         h6
         {
         font-weight: 400;
         font-size: 1.125rem;
         line-height: 1.2;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         }
         p.u-large-text
         {

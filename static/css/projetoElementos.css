@@ -213,7 +213,7 @@
     font-size: 1.5rem;
   }
 } .u-section-3 {
-  background-image: url("images/titulo_fundo.svg");
+  background-image: url("/static/images/titulo_fundo.svg");
   background-position: 50% 50%;
 }
 
@@ -254,7 +254,7 @@
 
 .u-section-3 .u-group-2 {
   width: 692px;
-  min-height: 151px;
+  min-height: 161px;
   margin: -79px auto 0 215px;
 }
 
@@ -267,11 +267,11 @@
   height: 7px;
   transform-origin: right center 0px;
   border-style: dotted;
-  margin: 15px auto 0;
+  margin: 10px auto 0;
 }
 
 .u-section-3 .u-text-2 {
-  margin: 17px 0 0;
+  margin: 10px 0 0;
 }
 
 .u-section-3 .u-text-3 {
@@ -333,7 +333,7 @@
 
 @media (max-width: 991px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 243px;
+    min-height: 221;
   }
 
   .u-section-3 .u-shape-1 {
