@@ -2,12 +2,11 @@ from django.contrib.auth import forms
 from django.forms import widgets
 from .models import User
 
-class UserChangeForm(forms.UserChangeForm):
-    class Meta(forms.UserChangeForm.Meta):
+class UserSettings(forms.UserChangeForm):
+    password = None
+    class Meta:
         model = User
-        #fields = ["email", "username", "role", "password"]
-        #TODO adicionar cpf e cnpj de acordo com o valor do 'role'
-        #TODO deixar o campo password 'nao visivel'
+        fields = ['street', 'state']
 
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
