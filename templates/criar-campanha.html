@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 <section class="u-align-center u-clearfix u-image u-section-title" id="" data-image-width="2000" data-image-height="250">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
@@ -260,7 +259,7 @@ C80.2,0,80.1,0,80,0z"></path>
                                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                                                 <option value="" disabled selected>Para quem você quer doar?</option>
                                                 {% for beneficiado in beneficiados %}
-                                                    <option value="{{beneficiado}}">{{beneficiado.username}}</option>
+                                                    <option value="{{beneficiado.id}}">{{beneficiado.username}}</option>
                                                 {% endfor %}
                                             </select>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
@@ -307,8 +306,7 @@ C80.2,0,80.1,0,80,0z"></path>
 
                                         <br><br>
                                         <div class="u-align-center u-form-group u-form-submit">
-                                            <button type="submit"
-                                                class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">SALVAR</button>
+                                            <button type="submit" class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1" value="Salvar">SALVAR</button>
                                         </div>
 
                                     </div>
