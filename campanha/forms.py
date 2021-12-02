@@ -60,3 +60,10 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = DonationItem
         fields = '__all__'
+
+class DoneeNeedForm(forms.Form):
+
+    need = forms.CharField(
+        label="Atual Necessidade"
+        )
+    need.widget.attrs.update({'class':"needField"})

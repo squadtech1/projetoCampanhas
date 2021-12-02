@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 
-from campanha.models import Campanha, DonationItem
-from .forms import CampanhaForm, DonationForm
+from campanha.models import Campanha, DonationItem, DoneeNeed
+from .forms import CampanhaForm, DonationForm, DoneeNeedForm
 from accounts.models import User
 
 
@@ -116,6 +116,44 @@ def doneeDecision(request, id, bool):
         campanha.save()
  
     return redirect('home')
+
+@login_required
+def criarAtualNecessidade(request):
+    form = DoneeNeedForm()
+    context = {
+            'form': form
+        }
+
+    if request.method == "GET":   
+        return render(request, 'atual-necessidade.html', context=context)
+    else:
+        form = DoneeNeedForm(request.POST)
+        if form.is_valid():
+
+            try:
+                atualNecessidadeBD = get_object_or_404(DoneeNeed, donee_id=request.user.id)
+            
+                atualNecessidade = DoneeNeed(
+                    id = atualNecessidadeBD.id,
+                    need = form.cleaned_data["need"],
+                    donee = request.user
+                    )
+                atualNecessidade.save()
+
+                return redirect('home')
+
+            except:
+                atualNecessidade = DoneeNeed(
+                    need = form.cleaned_data["need"],
+                    donee = request.user
+                )
+                atualNecessidade.save()
+
+                return redirect('home')
+
+        return render(request, 'atual-necessidade.html', context=context)
+
+
 
 @login_required
 def fazerDoacao(request):

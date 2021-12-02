@@ -14,10 +14,6 @@ class SignUp(generic.CreateView):
 
 @login_required 
 def settings(request):
-    """
-    Processes requests for the settings page, where users
-    can edit their profiles.
-    """
     form = UserSettings(instance=request.user)
     context = {
         'form': form
