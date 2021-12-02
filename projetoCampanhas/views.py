@@ -38,3 +38,7 @@ def saibaMais(request):
 
 def contato(request):  
     return render(request, "contato.html")
+
+@login_required
+def painel(request):  
+    return render(request, "painel.html")

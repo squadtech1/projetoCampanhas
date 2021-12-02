@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}DoaAção | Painel{% endblock %}
+{% block content %}
+
+PAINEL USUÁRIO
+
+<div><a href="{% url 'accounts:settings' %}" class="btn btn-info">Editar Perfil - Ok</a></div>
+
+<div><a href="{% url 'lista-beneficiados' %}" class="btn btn-info">Lista de Beneficiários - Ok</a></div>
+
+{% if user.role == 'Donor' %}
+
+<div><a href="{% url 'minhas-campanhas' %}" class="btn btn-info">Minhas Campanhas - OK</a></div>
+
+<div><a href="{% url 'campanha:criar' %}" class="btn btn-info">Criar Campanha - Ok</a></div>
+
+<div><a href="{% url 'campanha:doar' %}" class="btn btn-info">Fazer uma Doação</a></div>
+
+{% else %}
+
+<div><a href="{% url 'doacoes-recebidas' %}" class="btn btn-info">Doações Recebidas</a></div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -37,7 +37,7 @@ def criarCampanha(request):
                 volume = form.cleaned_data["volume"],
                 campanha = currentCampanha)
             donationItem.save()
-            return redirect('home')
+            return redirect('minhas-campanhas')
 
         return render(request, 'criar-campanha.html', context=context)
 
@@ -70,7 +70,7 @@ def editarCampanha(request, id):
                 campanha = campanha)
             donationItem.save()
             
-            return redirect('home')
+            return redirect('minhas-campanhas')
         else:
             return render(request, 'editar-campanha.html', {'form': form, 'campanha' : campanha})
     elif(request.method == 'GET'):

@@ -28,7 +28,7 @@ def settings(request):
         form = UserSettings(request.POST, instance=request.user)   
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('painel')
         
         else:
             return render(request, 'registration/settings.html', context=context)

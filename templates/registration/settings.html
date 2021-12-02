@@ -20,14 +20,13 @@
             <br>
             <div class="u-align-center u-container-style u-group u-radius-5 u-shape-round u-white u-group-1">
                 <div class="u-container-layout u-valign-middle u-container-layout-1">
-                    <img class="u-image" src="/static/images/register_icon.svg" alt="">
+                    <img class="u-image" src="/static/images/settings_icon.svg" alt="">
                     <h3 class="u-text u-text-default u-text-1">
-                        CADASTRE-SE
+                        EDITAR PERFIL
                     </h3>
                     <img class="u-image" src="/static/images/form_divider.svg" alt="">
                     <p class="u-text u-text-2">
-                        Para <strong>Doar</strong> ou <strong>Criar uma Campanha</strong>,<br>é necessário o cadastro em
-                        nosso sistema!
+                        Por enquanto, você pode editar apenas <strong>o seu endereço</strong>.<br>Não esqueça de preencher <strong>todos os campos!</strong>.
                     </p>
 
                     {% if form.errors %}
@@ -100,17 +99,10 @@
                     </div>
                     <br>
 
-                    <br>
                     <div class="u-align-center u-form-group u-form-submit">
                         <button type="submit"
                             class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">ATUALIZAR</button>
                     </div>
-                    <br>
-                    <h5>Já possui cadastro no DoaAção?</h5>
-                    <a href="{% url 'accounts:login' %}"
-                        class="u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-login-control u-login-forgot-password u-none u-text-black u-text-hover-palette-2-base u-btn-2">
-                        CLIQUE AQUI
-                    </a>
                 </div>
             </div>
             <br>
