@@ -75,14 +75,6 @@
                   PAINEL DO BENEFICIÁRIO</span></a>
                   {% endif %}
             </li>
-            
-            {% if user.role == 'Donee'  %}
-            <li class="u-nav-item"><a
-              class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
-              href="{% url 'campanha:atual-necessidade' %}" style="padding: 10px 0px;">Atual Necessidade</a>
-            </li>
-            {% endif %}
-
             {% else %}
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
