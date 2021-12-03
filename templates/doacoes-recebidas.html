@@ -145,6 +145,19 @@ C80.2,0,80.1,0,80,0z"></path>
 
 {% for campanha in campanhas %}
 
+{% if campanha.status == 'Pending Donee Confirmation' %}
+pending confirmation
+
+{{campanha.name}}
+
+{% else %}
+
+confirmed
+
+{{campanha.name}}
+{% endif %}
+
+
 <section class="u-clearfix u-section-doacoes-recebidas">
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-expanded-width u-list u-list-1">
