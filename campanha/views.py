@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 
-from campanha.models import Campanha, DonationItem, DoneeNeed
-from .forms import CampanhaForm, DonationForm, DoneeNeedForm
+from campanha.models import Campanha, DonationItem, DoneeNeed, Post
+from .forms import CampanhaForm, DonationForm, DoneeNeedForm, PostForm
 from accounts.models import User
 
 
@@ -154,7 +154,50 @@ def criarAtualNecessidade(request):
         return render(request, 'atual-necessidade.html', context=context)
 
 
+@login_required
+def criarPost(request):
 
+    form = PostForm()
+    context = {
+            'form': form
+        }
+
+    if request.method == "GET":   
+        return render(request, 'new-post.html', context=context)
+    else:
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = Post(
+                    post = form.cleaned_data["post"],
+                    user = request.user
+                )
+            post.save()
+
+            return redirect('home')
+
+        return render(request, 'new-post.html', context=context)
+
+@login_required
+def deletarPost(request, id):
+	publicacao = get_object_or_404(Post, pk=id)
+
+	if request.method == 'POST':
+		publicacao.delete()
+		return redirect('painel')
+
+
+@login_required
+def listaUserPosts(request):
+    posts = Post.objects.filter(user_id=request.user.id)
+    context = {
+        "posts": posts
+    }
+
+    return render(request, "lista-user-posts.html", context=context)
+    
+    
+
+## METODOS ABAIXO NÃO ESTOU SENDO USADOS ##
 @login_required
 def fazerDoacao(request):
     form = DonationForm()
