@@ -67,3 +67,10 @@ class DoneeNeedForm(forms.Form):
         label="Atual Necessidade"
         )
     need.widget.attrs.update({'class':"needField"})
+
+class PostForm(forms.Form):
+
+    post = forms.CharField(
+        label="New Post"
+        )
+    post.widget.attrs.update({'class':"postField"})
