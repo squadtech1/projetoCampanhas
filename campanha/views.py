@@ -194,6 +194,16 @@ def listaUserPosts(request):
     }
 
     return render(request, "lista-user-posts.html", context=context)
+
+
+#ver onde ficará essa view
+@login_required
+def listarPostagens(request):
+    posts = Post.objects.all()
+    context = {
+        "posts": posts
+    }
+    return
     
     
 

@@ -11,7 +11,7 @@ class UserSettings(forms.UserChangeForm):
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
         model = User
-        fields = forms.UserCreationForm.Meta.fields + ("role", "entity_type", "cpf_cnpj", "email","street", "state",)
+        fields = forms.UserCreationForm.Meta.fields + ("first_name", "role", "entity_type", "cpf_cnpj", "email","street", "state","description",)
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
