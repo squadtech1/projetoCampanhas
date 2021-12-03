@@ -14,6 +14,7 @@ urlpatterns = [
     path('atual-necessidade/', criarAtualNecessidade, name='atual-necessidade'),
     path("criarPost/", criarPost, name="criarPost"),
     path('deletarPost/<int:id>/', deletarPost, name="deletarPost"),
-    path("userPosts", listaUserPosts, name="userPosts")
+    path("userPosts", listaUserPosts, name="userPosts"),
+    path("listaPosts", listarPostagens, name="listaPosts")
     # path('form-campanha/', form_campanha, name='form-campanha')
 ]
