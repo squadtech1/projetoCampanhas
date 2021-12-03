@@ -1,12 +1,160 @@
 {% extends 'base.html' %}
 
-{% block title %}Criar e Editar Campanha{% endblock %}
+{% block title %}DoaAção | Conheça o Sistema{% endblock %}
 
-    {% block content %}
+{% block content %}
 
-SAIBA MAIS
+<section class="u-clearfix u-palette-2-base u-section-3" id="sec-72ac">
+    <div class="u-clearfix u-sheet u-sheet-1"></div>
+</section>
 
-    {% endblock %}
 
-    {% block footer %}
-    {% endblock %}
+<section class="u-clearfix u-section-6 u-grey-5">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1 ">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1 u-valign-middle">
+            <div class="u-layout u-valign-middle">
+                <div class="u-layout-row u-valign-middle">
+                    <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1 u-valign-middle">
+                        <div class="u-container-layout u-container-layout-1 u-valign-middle">
+
+                            <!-- Coluna 1 ---------------------- -->
+
+                            <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_destak.svg" alt="" data-image-width="1909" data-image-height="845">
+
+                        </div>
+                    </div>
+                    <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-2 u-valign-middle">
+
+                            <!-- Coluna 2 ---------------------- -->
+
+                            <h1 class="u-text u-text-default u-text-palette-2-base u-text-1">Juntos para<br>fazer o bem!</h1>
+                            <br>
+                            <p class="u-text u-text-default u-text-2">Nosso sistema <strong>conecta Doadores e Beneficiários</strong>, permindo a formalização e a entrega de doações, garantindo mais confiança e segurança para ambas as partes.</p>
+                            <br>
+                            <p class="u-text u-text-default u-text-2"><strong>Acreditamos que iniciativas como essa mudam o mundo! Por isso, <span class="u-text-palette-2-base">nosso sistema é totalmente gratuito!</span></strong></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br>
+
+<section class="u-clearfix u-section-11" id="">
+    <div class="u-align-center u-clearfix u-sheet u-sheet-1">
+    <h4 class="u-text u-text-default u-text-palette-2-base u-text-1">Participando como Doador</h4>
+    <p class="u-text u-text-default u-text-2 u-align-left">Como Doador você pode <strong>Criar uma Campanha de Doação</strong> direcionada para um Beneficiário e <strong>Doar para Campanhas</strong> criadas por outros usuários! </p>
+    <br>
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+          <div class="u-layout-row">
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-1">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_1.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Doador se Cadastra no doaAção</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-2">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_2.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Cria uma Campanha de Doação</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-3">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_3.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Aguarda o Beficiário Aceitar a Doação</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-4">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_4.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Doador e Beneficiário planejam a Entrega</strong></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-clearfix u-section-align-center">
+    <div class="u-align-center u-form-group u-form-submit">
+        <a href="{% url 'accounts:register' %}" class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">QUERO SER UM DOADOR</a>
+    </div>
+  </section>
+
+
+<br><br>
+
+  <section class="u-clearfix u-section-11 u-grey-5">
+    <div class="u-align-center u-clearfix u-sheet u-sheet-1">
+        <BR>
+    <h4 class="u-text u-text-default u-text-palette-2-base u-text-1">Participando como Beneficiário</h4>
+    <p class="u-text u-text-default u-text-2 u-align-left">Como Beneficiário você pode <strong>Cadastrar suas Necessidades</strong> e <strong>Aprovar ou Recusar</strong> uma doação recebida! </p>
+    <br>
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+          <div class="u-layout-row">
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-1">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_1.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Beneficiário se Cadastra no doaAção</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-2">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_beneficiario_2.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Cadastra suas<br>Necessidades</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-3">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_beneficiario_3.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Aguarda, Aprova ou Recusa uma Doação</strong></p>
+
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-4">
+
+                <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="/static/images/saiba_mais_doador_4.svg" alt="" data-image-width="1909" data-image-height="845">
+                <p><strong>Doador e Beneficiário planejam a Entrega</strong></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="u-clearfix u-section-align-center">
+        <div class="u-align-center u-form-group u-form-submit">
+            <a href="{% url 'accounts:login' %}" class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">QUERO SER UM BENEFICIÁRIO</a>
+            <br>
+            <br>
+        </div>
+      </section>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
