@@ -43,18 +43,27 @@ class CampanhaForm(forms.Form):
         )
     item = forms.CharField(max_length=50)
 
+
+
     volume = forms.IntegerField(label='Quantidade')
     
-    name.widget.attrs.update({'class':"nameField"})
-    start.widget.attrs.update({'class':'startField'})
-    end.widget.attrs.update({'class':'endField'})
-    description.widget.attrs.update({'class':'descriptionField'})
+    name.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    start.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'type':'date'})
+    end.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    description.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
     #status.widget.attrs.update({'class':'statusField'})
-    donee.widget.attrs.update({'class':'doneeField'})
-    item.widget.attrs.update({'class':'itemField'})
-    volume.widget.attrs.update({'class':'volumeField'})
+    donee.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    item.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    volume.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
 
 class DonationForm(forms.ModelForm):
     class Meta:
         model = DonationItem
         fields = '__all__'
+
+class DoneeNeedForm(forms.Form):
+
+    need = forms.CharField(
+        label="Atual Necessidade"
+        )
+    need.widget.attrs.update({'class':"needField"})

@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}DoaAção | Criar e Editar Campanha{% endblock %}
+{% block title %}DoaAção | Crie sua Campanha{% endblock %}
 
 {% block content %}
 
 
-<section class="u-align-center u-clearfix u-image u-section-3" id="" data-image-width="2000" data-image-height="250">
+<section class="u-align-center u-clearfix u-image u-section-title" id="" data-image-width="2000" data-image-height="250">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
         <div class="u-container-style u-group u-group-1">
             <div class="u-container-layout">
                 <div class="u-hidden-md u-hidden-sm u-hidden-xs u-shape u-shape-svg u-text-palette-3-base u-shape-2">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 50" style="">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 50">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-bd85"></use>
                     </svg>
                     <svg class="u-svg-content" viewBox="0 0 160 50" x="0px" y="0px" id="svg-bd85"
@@ -27,7 +27,7 @@ C11.2,30.2,20.6,29.9,32.2,38z"></path>
                     </svg>
                 </div>
                 <div class="u-hidden-md u-hidden-sm u-hidden-xs u-shape u-shape-svg u-text-custom-color-7 u-shape-3">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style="">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-11f5"></use>
                     </svg>
                     <svg class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-11f5">
@@ -56,7 +56,7 @@ S0,148.8,0,152.8z"></path>
                 </div>
                 <div
                     class="u-hidden-md u-hidden-sm u-hidden-xs u-preserve-proportions u-shape u-shape-svg u-text-custom-color-8 u-shape-4">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style="">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-b8a4"></use>
                     </svg>
                     <svg class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-b8a4">
@@ -92,7 +92,7 @@ C80.2,0,80.1,0,80,0z"></path>
             <div class="u-container-layout">
                 <div
                     class="u-hidden-md u-hidden-sm u-hidden-xs u-preserve-proportions u-shape u-shape-svg u-text-custom-color-9 u-shape-5">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style="">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7234"></use>
                     </svg>
                     <svg class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-7234">
@@ -121,7 +121,7 @@ C14.5,148.8,11.2,145.5,7.3,145.5z"></path>
                 </div>
                 <div
                     class="u-hidden-md u-hidden-sm u-hidden-xs u-preserve-proportions u-shape u-shape-svg u-text-palette-3-base u-shape-6">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style="">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-42fa"></use>
                     </svg>
                     <svg class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-42fa">
@@ -161,9 +161,9 @@ C80.2,0,80.1,0,80,0z"></path>
                                 de donativos, sem sair de casa!</p>
                             <img class="u-image" src="/static/images/form_divider.svg" alt="">
                             <p class="u-align-left">Ao preencher o formulário desta página, você irá <span
-                                    class="u-text-palette-1-base">conectar sua doação a uma entidade</span> previamente
-                                inscrita em nosso site.</p>
-                            <p class="u-align-left">Assim que a entidade confirmar a doação, <span
+                                    class="u-text-palette-1-base">conectar sua doação a um Beneficiário</span> previamente
+                                inscrito em nosso site.</p>
+                            <p class="u-align-left">Assim que o Beneficiário confirmar a doação, <span
                                     class="u-text-palette-1-base">ambos receberão as informações</span> referêntes à
                                 entrega.</p>
                         </div>
@@ -260,7 +260,7 @@ C80.2,0,80.1,0,80,0z"></path>
                                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                                                 <option value="" disabled selected>Para quem você quer doar?</option>
                                                 {% for beneficiado in beneficiados %}
-                                                    <option value="{{beneficiado}}">{{beneficiado.username}}</option>
+                                                    <option value="{{beneficiado.id}}">{{beneficiado.username}}</option>
                                                 {% endfor %}
                                             </select>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
@@ -307,8 +307,7 @@ C80.2,0,80.1,0,80,0z"></path>
 
                                         <br><br>
                                         <div class="u-align-center u-form-group u-form-submit">
-                                            <button type="submit"
-                                                class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">SALVAR</button>
+                                            <button type="submit" class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1" value="Salvar">SALVAR</button>
                                         </div>
 
                                     </div>

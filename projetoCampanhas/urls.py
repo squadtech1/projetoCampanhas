@@ -6,6 +6,8 @@ app_name = 'campanha'
 urlpatterns = [
     path('', home),
     path('home/', home, name='home'),
+    path('contato', contato, name="contato"),
+    path('painel', painel, name="painel"),
     path('minhas-campanhas/', listaCampanhas, name='minhas-campanhas'),
     path('doacoes-recebidas/', doacoesRecebidas, name='doacoes-recebidas'),
     path('lista-beneficiados/', listaBeneficiados, name='lista-beneficiados'),
