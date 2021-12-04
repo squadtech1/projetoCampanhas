@@ -9,6 +9,8 @@
     <div class="u-clearfix u-sheet u-sheet-1"></div>
 </section>
 
+
+
 <form method="post">
 
     {% csrf_token %}
@@ -56,16 +58,22 @@
                     <br>
                     {% endif %}
 
-
                     <div class="u-form-group u-form-group-1">
                         <label for="" class="u-form-control-hidden u-label u-text-black"></label>
-                        <input type="text" name="street" maxlength="50" placeholder="Endereço" id="id_street" required
+                        <input value="{{user.email}}" type="text" name="email" maxlength="50" placeholder="email" id="id_street" required
+                            class="u-grey-10 u-input u-input-rectangle">
+                    </div>
+                    <br>
+                    
+                    <div class="u-form-group u-form-group-1">
+                        <label for="" class="u-form-control-hidden u-label u-text-black"></label>
+                        <input value="{{user.street}}" type="text" name="street" maxlength="50" placeholder="Endereço" id="id_street" required
                             class="u-grey-10 u-input u-input-rectangle">
                     </div>
                     <br>
                     <div class="u-form-select-wrapper">
                         <select id="id_state" name="state" required class="u-grey-10 u-input u-input-rectangle">
-                            <option value="" disabled selected>Estado</option>
+                            <option value="{{user.state}}" disabled selected>{{user.state}}</option>
                             <option value="Acre">Acre</option>
                             <option value="Alagoas">Alagoas</option>
                             <option value="Amapá">Amapá</option>

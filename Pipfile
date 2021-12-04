@@ -38,6 +38,8 @@ yarl = "==1.6.3"
 Django = "==3.2.7"
 PyYAML = "==5.4.1"
 gunicorn = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

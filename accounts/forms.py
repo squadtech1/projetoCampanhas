@@ -6,7 +6,7 @@ class UserSettings(forms.UserChangeForm):
     password = None
     class Meta:
         model = User
-        fields = ['street', 'state']
+        fields = ['email','street', 'state','description']
 
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):

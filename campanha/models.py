@@ -41,6 +41,7 @@ class DonationItem(models.Model):
 class Post(models.Model):
     post = models.CharField(max_length=50, blank=True, null=True)
     user = models.ForeignKey("accounts.User", on_delete=CASCADE,null=True, related_name="user")
+    date = models.DateField(default=now)
 
 class DoneeNeed(models.Model):
     need = models.CharField(max_length=50, blank=True, null=True)
