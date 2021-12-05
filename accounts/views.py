@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib.auth import forms
-from validate_docbr import CPF, CNPJ
 from django.contrib import messages
 
 class PasswordsChangeView(PasswordChangeView):
@@ -21,8 +20,6 @@ class SignUp(generic.CreateView):
     template_name = 'registration/register.html'
 
 def register(request):
-    cpf = CPF()
-    cnpj = CNPJ()
     form = UserCreationForm()
 
     if request.method == 'POST':

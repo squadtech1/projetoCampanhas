@@ -8,12 +8,12 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractUser):
     
     class Roles(models.TextChoices):
-        DONOR = "Donor"
-        DONEE = "Donee"  
+        DONOR = "Doador"
+        DONEE = "Beneficiário"  
 
     class EntityType(models.TextChoices):
-        FISICA = "Fisica"
-        JURIDICA = "Juridica"
+        FISICA = "Física"
+        JURIDICA = "Jurídica"
 
     role = models.CharField(_('Roles'), max_length=50, choices=Roles.choices, default= Roles.DONEE)
     entity_type = models.CharField(_('EntityType'), max_length = 8, choices = EntityType.choices, default = EntityType.FISICA)

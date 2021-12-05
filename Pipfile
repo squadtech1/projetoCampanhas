@@ -41,6 +41,7 @@ gunicorn = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
 validate-docbr = "*"
+requests = "*"
 
 [dev-packages]
 
