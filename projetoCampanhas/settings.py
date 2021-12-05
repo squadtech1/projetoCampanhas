@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'projetoCampanhas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'doaacaov2',
+        'NAME': 'doaacaov4',
         'USER': 'doaacao',
         'PASSWORD': 'Glmtv@2021',
         'HOST': 'doaacao.postgres.database.azure.com',

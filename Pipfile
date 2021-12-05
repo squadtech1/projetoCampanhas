@@ -40,6 +40,7 @@ PyYAML = "==5.4.1"
 gunicorn = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
+validate-docbr = "*"
 
 [dev-packages]
 

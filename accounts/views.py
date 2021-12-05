@@ -7,6 +7,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib.auth import forms
+from validate_docbr import CPF, CNPJ
+from django.contrib import messages
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = forms.PasswordChangeForm
@@ -17,6 +19,32 @@ class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('accounts:login')
     template_name = 'registration/register.html'
+
+def register(request):
+    cpf = CPF()
+    cnpj = CNPJ()
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            cpfCnpj = form.cleaned_data["cpf_cnpj"]
+            if form.cleaned_data["entity_type"] == User.EntityType.FISICA:
+                if cpf.validate(cpfCnpj):
+                    form.save()
+                    return redirect('accounts:login')
+                else:
+                    context = {'form': form, 'isCpfCnpjValid':False}
+            elif form.cleaned_data["entity_type"] == User.EntityType.JURIDICA: 
+                if cnpj.validate(cpfCnpj):
+                    form.save()
+                    return redirect('accounts:login')
+                else:
+                    messages.error(request, 'The form is invalid.')
+            return render(request, 'registration/register.html', context)
+
+    context = {'form': form, 'isCpfCnpjValid':True}
+    return render(request, 'registration/register.html', context)
 
 
 @login_required 
