@@ -8,7 +8,7 @@ class Campanha(models.Model):
 
     class Status(models.TextChoices):
         ENABLED = "Enabled"
-        DISABLED = "Disabled",
+        DISABLED = "Disabled"
         PENDING_DONEE_CONFIRMATION = "Pending Donee Confirmation"
 
     name = models.CharField(max_length=50, blank=True, null=True)

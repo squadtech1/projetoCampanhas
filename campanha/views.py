@@ -11,7 +11,6 @@ from datetime import datetime
 def criarCampanha(request):
     form = CampanhaForm()
     beneficiados = User.objects.filter(role=User.Roles.DONEE)
-    print(beneficiados)
     context = {
             'form': form,
             'beneficiados':beneficiados
@@ -45,7 +44,6 @@ def criarCampanha(request):
 @login_required
 def editarCampanha(request, id):
     campanha = get_object_or_404(Campanha, pk=id)
-    print(campanha.start)
     donationItem = get_object_or_404(DonationItem, campanha_id=campanha.id)
     initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee, 'item':donationItem.item, 'volume':donationItem.volume}
     form = CampanhaForm(initial=initial)
@@ -195,44 +193,3 @@ def listaUserPosts(request):
     }
 
     return render(request, "lista-user-posts.html", context=context)
-
-
-#ver onde ficará essa view
-@login_required
-def listarPostagens(request):
-    posts = Post.objects.all()
-    context = {
-        "posts": posts
-    }
-    return
-    
-    
-
-## METODOS ABAIXO NÃO ESTOU SENDO USADOS ##
-@login_required
-def fazerDoacao(request):
-    form = DonationForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'doacao.html', context=context)
-
-
-@login_required
-def gerenciaCampanha(request):
-    return render(request, 'gerencia-campanha.html')
-
-
-@login_required
-def form_campanha(request):
-    form = CampanhaForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'criar-campanha.html', context=context)
-
-def getCampanhas(request):
-    campanhas = Campanha.objects.all()
-    donationItems = DonationItem.objects.all()
-    print(donationItems[0].campanha.id)
-    return

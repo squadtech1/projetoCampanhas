@@ -24,4 +24,3 @@ class User(AbstractUser):
     
     def __str__(self):
         return str(self.username)
-        # return " Name: " + str(self.username) + "Id: " + str(self.id) + " UserType: " + str(self.role)
