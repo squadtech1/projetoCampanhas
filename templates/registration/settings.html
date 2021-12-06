@@ -28,7 +28,7 @@
                     </h3>
                     <img class="u-image" src="/static/images/form_divider.svg" alt="">
                     <p class="u-text u-text-2">
-                        Por enquanto, você pode editar apenas <strong>o seu endereço</strong>.<br>Não esqueça de preencher <strong>todos os campos!</strong>.
+                        Não mora mais no mesmo local? Tem um novo e-mail?<br> Altere seus dados através do <strong>formulário abaixo</strong>.
                     </p>
 
                     {% if form.errors %}
@@ -40,13 +40,9 @@
                                         class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
                                         <div class="u-container-layout u-valign-middle u-container-layout-1">
                                             <h4>Dados Incorretos</h4>
-                                            <p class="u-align-left">O nome de usuário pode já estar em uso, ou a senha não respeita as regras abaixo:</p>
                                             <small class="u-align-left">
                                                 <ul>
-                                                    <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
-                                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
-                                                    <li>Sua senha não pode ser uma senha comumente utilizada.</li>
-                                                    <li>Sua senha não pode ser inteiramente numérica.</li>
+                                                    {{form.errors}}
                                                 </ul>
                                             </small>
                                         </div>

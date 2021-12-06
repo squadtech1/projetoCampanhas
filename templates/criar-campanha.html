@@ -5,6 +5,8 @@
 {% block content %}
 
 
+{{form.errors}}
+
 <section class="u-align-center u-clearfix u-image u-section-title" id="" data-image-width="2000" data-image-height="250">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
@@ -183,94 +185,31 @@ C80.2,0,80.1,0,80,0z"></path>
                                         <h3>CRIAR CAMPANHA</h3>
                                         <br>
 
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Título</h6>
-                                        </label>
                                         <div class="u-form-group u-form-group-1">
-                                            <label for="" class="u-form-control-hidden u-label"></label>
-                                            <input type="text" placeholder="Escreva o Título da sua Campanha" id="id_name" name="name"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.name.label}}</h6>
+                                            {{form.name}}
                                         </div>
                                         <br>
-
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Início da Campanha</h6>
-                                        </label>
                                         <div class="u-form-group u-form-group-1">
-                                            <label for="" class="u-form-control-hidden u-label"></label>
-                                            <input type="date" placeholder="Começo da Campanha" id="id_start" name="start"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.start.label}}</h6>
+                                            {{form.start}}
                                         </div>
                                         <br>
-
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Fim da Campanha</h6>
-                                        </label>
                                         <div class="u-form-group u-form-group-1">
-                                            <label for="" class="u-form-control-hidden u-label"></label>
-                                            <input type="date" placeholder="Fim da Campanha" id="id_end" name="end"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.end.label}}</h6>
+                                            {{form.end}}
                                         </div>
-
+                                        <br>
+                                        <div class="u-form-group u-form-group-1">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.description.label}}</h6>
+                                            {{form.description}}
+                                        </div>
                                         <br>
 
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Descrição</h6>
-                                        </label>
-                                        <div class="u-form-group u-form-textarea u-form-group-4">
-                                            <textarea rows="3" cols="50" id="id_description"  name="description"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="" placeholder="Um resumo da Campanha e Objetivos"></textarea>
+                                        <div class="u-form-group u-form-group-1">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.donee.label}}</h6>
+                                            {{form.donee}}
                                         </div>
-
-                                        <br>
-
-                                        <!--
-                                            
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Status</h6>
-                                        </label>
-                                        <div class="u-form-select-wrapper">
-                                            <select id="id_status" name="status"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
-                                                <option value="" disabled selected>Qual status da Campanha?</option>
-                                                <option value="ENABLED">Publicada</option>
-                                                <option value="DISABLED">Desabilitada</option>
-                                            </select>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
-                                                class="u-caret">
-                                                <path fill="currentColor" d="M4 8L0 4h8z"></path>
-                                            </svg>
-                                        </div>
-
-                                        <br>
-
-                                        -->
-
-                                        <!-- DEIXAR DINÂMICO ---------------------------- -->
-
-                                        <label for="" class="u-align-left u-text-custom-color-9">
-                                            <h6>Beneficiado</h6>
-                                        </label>
-                                        <div class="u-form-select-wrapper">
-                                            <select id="id_donee" name="donee"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
-                                                <option value="" disabled selected>Para quem você quer doar?</option>
-                                                {% for beneficiado in beneficiados %}
-                                                    <option value="{{beneficiado.id}}">{{beneficiado.username}}</option>
-                                                {% endfor %}
-                                            </select>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
-                                                class="u-caret">
-                                                <path fill="currentColor" d="M4 8L0 4h8z"></path>
-                                            </svg>
-                                        </div>
-
-                                        <!-- -------------------------------------- -->
-
                                         <br>
 
                                         <img class="u-image" src="/static/images/form_divider.svg" alt="">
@@ -282,28 +221,17 @@ C80.2,0,80.1,0,80,0z"></path>
                                             Escreva abaixo, em poucas palavras, o item que seja doar e a quantidade
                                             pretendida.</p>
 
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Item</h6>
-                                        </label>
                                         <div class="u-form-group u-form-group-1">
-                                            <label for="" class="u-form-control-hidden u-label"></label>
-                                            <input type="text" placeholder="Escreva qual o ITEM da Doação" id="id_item" name="item" maxlength="50"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.item.label}}</h6>
+                                            {{form.item}}
                                         </div>
-
                                         <br>
 
-                                        <label for=" " class="u-align-left u-text-custom-color-9">
-                                            <h6>Quantidade</h6>
-                                        </label>
                                         <div class="u-form-group u-form-group-1">
-                                            <label for="" class="u-form-control-hidden u-label"></label>
-                                            <input type="number" min="0"
-                                                placeholder="Qual a QUANTIDADE que deseja doar?" id="id_volume" name="volume"
-                                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                                required="">
+                                            <h6 class="u-align-left u-text-custom-color-9">{{form.volume.label}}</h6>
+                                            {{form.volume}}
                                         </div>
+                                        <br>
 
                                         <br><br>
                                         <div class="u-align-center u-form-group u-form-submit">

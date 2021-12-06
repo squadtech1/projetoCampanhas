@@ -2,144 +2,267 @@
 {% block title %}DoaAção | Painel{% endblock %}
 {% block content %}
 
-<a href="{% url 'accounts:remover' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">excluir conta</a>
-<br>
-<a href="{% url 'accounts:changePassword' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">alterar senha</a>
 <section class="u-align-center u-clearfix u-white u-section-painel">
-    <div class="u-container-style u-expanded-width u-group u-image u-image-1" data-image-width="2000" data-image-height="1333">
-      <div class="u-container-layout u-container-layout-1"></div>
+  <div class="u-container-style u-expanded-width u-group u-image u-image-1" data-image-width="2000"
+    data-image-height="1333">
+    <div class="u-container-layout u-container-layout-1"></div>
+  </div>
+  <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
+  <img class="u-image u-image-circle u-image-2" src="/static/images/painel_perfil_icon.svg" alt=""
+    data-image-width="197" data-image-height="85">
+  <div class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-container-style u-group u-group-2">
+    <div class="u-container-layout">
+      <h3
+        class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+        {{user.username}}</h3>
+      {% if user.role == 'Doador' %}
+      <h6
+        class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-2-base u-text-2">
+        PAINEL DO DOADOR</h6>
+      {% else %}
+      <h6
+        class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-2-base u-text-2">
+        PAINEL DO BENEFICIÁRIO</h6>
+      {% endif %}
     </div>
-    <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
-    <img class="u-image u-image-circle u-image-2" src="/static/images/painel_perfil_icon.svg" alt="" data-image-width="197" data-image-height="85">
-    <div class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-container-style u-group u-group-2">
-      <div class="u-container-layout">
-        <h3 class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">{{user.username}}</h3>
-        {% if user.role == 'Donor' %}
-        <h6 class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-2-base u-text-2">PAINEL DO DOADOR</h6>
+  </div>
+</section>
+
+
+
+
+<section class="u-clearfix u-section-painel-menu">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+
+
+        {% if user.role == 'Doador' %}
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'campanha:criar' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Doar</h4>
+                <a href="{% url 'campanha:criar' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
+              </div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_fazer_doacao.svg"
+              alt="" data-image-width="1037" data-image-height="351">
+            <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'minhas-campanhas' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Minhas Campanhas</h4>
+                <a href="{% url 'minhas-campanhas' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
+              </div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1"
+              src="/static/images/painel_icone_minhas_campanhas.svg" alt="" data-image-width="1037"
+              data-image-height="351">
+            <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+
         {% else %}
-        <h6 class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-2-base u-text-2">PAINEL DO BENEFICIÁRIO</h6>
-        {% endif %}
-      </div>
-    </div>
-  </section>
 
 
-
-
-  <section class="u-clearfix u-section-painel-menu">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <div class="u-expanded-width u-list u-list-1">
-        <div class="u-repeater u-repeater-1">
-
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'campanha:userPosts' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Posts</h4>
-                  <a href="{% url 'campanha:userPosts' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'doacoes-recebidas' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Doações Recebidas</h4>
+                <a href="{% url 'doacoes-recebidas' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
               </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_nova_campanha.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1"
+              src="/static/images/painel_icone_minhas_campanhas.svg" alt="" data-image-width="1037"
+              data-image-height="351">
+            <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'campanha:atual-necessidade' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Atual Necessidade</h4>
+                <a href="{% url 'campanha:atual-necessidade' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
+              </div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_fazer_doacao.svg"
+              alt="" data-image-width="1037" data-image-height="351">
+            <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+        data-href="{% url 'campanha:userPosts' %}">
+        <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+          <div class="u-container-style u-group u-group-1">
+            <div
+              class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+              <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                Meus Posts</h4>
+              <a href="{% url 'campanha:userPosts' %}"
+                class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                Aqui</a>
             </div>
           </div>
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'accounts:settings' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Editar Perfil</h4>
-                  <a href="{% url 'accounts:settings' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_editar_perfil.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-
-          {% if user.role == 'Donor' %}
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'campanha:criar' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Criar Campanha</h4>
-                  <a href="{% url 'campanha:criar' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_nova_campanha.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'minhas-campanhas' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Minhas Campanhas</h4>
-                  <a href="{% url 'minhas-campanhas' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_minhas_campanhas.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-
-          
-          {% else %}
-
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'doacoes-recebidas' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Doações Recebidas</h4>
-                  <a href="{% url 'doacoes-recebidas' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_minhas_campanhas.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-
-
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'campanha:atual-necessidade' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Atual Necessidade</h4>
-                  <a href="{% url 'campanha:atual-necessidade' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_fazer_doacao.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-
-
-          {% endif %}
-
-
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1" data-href="{% url 'lista-beneficiados' %}">
-            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
-              <div class="u-container-style u-group u-group-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
-                  <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">Beneficiários</h4>
-                  <a href="{% url 'lista-beneficiados' %}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique Aqui</a>
-                </div>
-              </div>
-              <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_beneficiarios.svg" alt="" data-image-width="1037" data-image-height="351">
-              <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
-            </div>
-          </div>
-          
-
+          <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_nova_campanha.svg"
+            alt="" data-image-width="1037" data-image-height="351">
+          <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
         </div>
       </div>
+
+
+        {% endif %}
+
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'lista-beneficiados' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Listar Beneficiários</h4>
+                <a href="{% url 'lista-beneficiados' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
+              </div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_beneficiarios.svg"
+              alt="" data-image-width="1037" data-image-height="351">
+            <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+        data-href="{% url 'lista-beneficiados' %}">
+        <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+          <div class="u-container-style u-group u-group-1">
+            <div
+              class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+              <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                Meu Perfil Público</h4>
+              <a href="{% url 'lista-beneficiados' %}"
+                class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">
+                Clique Aqui</a>
+            </div>
+          </div>
+          <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_beneficiarios.svg"
+            alt="" data-image-width="1037" data-image-height="351">
+          <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+        </div>
+      </div>
+
+
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+
+
+<section class="u-clearfix u-section-painel-menu">  
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <h5>Gerenciar Perfil</h5>
+      <div class="u-repeater u-repeater-1">
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+          data-href="{% url 'accounts:changePassword' %}">
+          <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+            <div class="u-container-style u-group u-group-1">
+              <div
+                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                  Alterar Senha</h4>
+                <a href="{% url 'accounts:changePassword' %}"
+                  class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                  Aqui</a>
+              </div>
+            </div>
+            <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_alterar_senha.svg"
+              alt="" data-image-width="1037" data-image-height="351">
+            <div class="u-custom-color-8 u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+          </div>
+        </div>
+
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+        data-href="{% url 'accounts:settings' %}">
+        <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+          <div class="u-container-style u-group u-group-1">
+            <div
+              class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+              <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+                Editar Perfil</h4>
+              <a href="{% url 'accounts:settings' %}"
+                class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+                Aqui</a>
+            </div>
+          </div>
+          <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_editar_perfil.svg"
+            alt="" data-image-width="1037" data-image-height="351">
+          <div class="u-custom-color-8 u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+        </div>
+      </div>
+
+      <div class="u-container-style u-palette-2-light-3 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
+      data-href="{% url 'accounts:remover' %}">
+      <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
+        <div class="u-container-style u-group u-group-1">
+          <div
+            class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+            <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
+              Excluir Conta</h4>
+            <a href="{% url 'accounts:remover' %}"
+              class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">Clique
+              Aqui</a>
+          </div>
+        </div>
+        <img class="u-image u-image-round u-radius-50 u-image-1" src="/static/images/painel_icone_excluir_conta.svg"
+          alt="" data-image-width="1037" data-image-height="351">
+        <div class="u-palette-2-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
+      </div>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
 {% endblock %}

@@ -32,7 +32,7 @@ class UserCreationForm(forms.UserCreationForm):
             ESTADOS.append(estado['nome'])
 
         super().__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
+        self.fields['first_name'].widget.attrs.update({'class': ' u-grey-10 u-input u-input-rectangle'})
         self.fields['first_name'].label = "Nome"
         self.fields['role'] = form.ChoiceField(choices=tuple([(name, name) for name in User.Roles]))
         self.fields['role'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
@@ -48,11 +48,11 @@ class UserCreationForm(forms.UserCreationForm):
         self.fields['email'].label = "E-mail"
         self.fields['street'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
         self.fields['street'].label = "Endereço"
+        self.fields['state'] = form.ChoiceField(choices=tuple([(estado, estado) for estado in ESTADOS]))
         self.fields['state'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
         self.fields['state'].label = "Estado"
-        self.fields['state'] = form.ChoiceField(choices=tuple([(estado, estado) for estado in ESTADOS]))
         self.fields['description'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
-        self.fields['description'].label = "Descrição"
+        self.fields['description'].label = "Fale sobre você em Poucas Palavras"
         self.fields['password1'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
         self.fields['password2'].widget.attrs.update({'class': 'u-grey-10 u-input u-input-rectangle'})
 

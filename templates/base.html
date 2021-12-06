@@ -69,7 +69,7 @@
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
                 href="{% url 'painel' %}" style="padding: 10px 0px;">Olá, {{user.username}}<br><span style="color:#e95374;font-size:10px;">
-                  {% if user.role == 'Donor' %}
+                  {% if user.role == 'Doador' %}
                   PAINEL DO DOADOR</span></a>
                   {% else %}
                   PAINEL DO BENEFICIÁRIO</span></a>
@@ -87,7 +87,7 @@
 
             {% endif %}
 
-            {% if user.role == 'Donor' %}
+            {% if user.role == 'Doador' %}
             <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
               href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas<br><span style="color:white;font-size:10px;">.</span></a>
             </li>
@@ -140,14 +140,14 @@
                 {% if user.is_authenticated %}
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'painel' %}" style="padding: 10px 0px;">Olá,
                     {{user.username}}<br><span style="color:lightpink;font-size:15px;">
-                    {% if user.role == 'Donor' %}
+                    {% if user.role == 'Doador' %}
                     Painel do Doador</span></a>
                     {% else %}
                     Painel do Beneficiário</span></a>
                     {% endif %}
                 </li>
 
-                {% if user.role == 'Donor' %}
+                {% if user.role == 'Doador' %}
                 <li class="u-nav-item">
                   <a class="u-button-style u-nav-link" href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas</a>
                 </li>

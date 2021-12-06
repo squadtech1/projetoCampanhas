@@ -23,22 +23,25 @@ class CampanhaForm(forms.Form):
 
     start = forms.DateField(
         initial=now,
-        label="Começo"
+        label="Começo",
+        widget=forms.DateInput(attrs={'type': 'date'})
         )
 
     end = forms.DateField(
-        label="Fim"
+        label="Fim",
+        widget=forms.DateInput(attrs={'type': 'date'})
     )
 
     description = forms.CharField(
         max_length=50,
-        label='Descrição'
+        label='Descrição',
+        widget=forms.Textarea(attrs={'type': 'textarea'})
         )
 
     #status = forms.ChoiceField(choices = CAMPANHA_STATUS)
 
     donee = forms.ModelChoiceField(
-        queryset=User.objects.filter(role="Donee").order_by("username"),
+        queryset=User.objects.filter(role="Beneficiário").order_by("username"),
         label="Beneficiado"
         )
     item = forms.CharField(max_length=50)
@@ -47,14 +50,14 @@ class CampanhaForm(forms.Form):
 
     volume = forms.IntegerField(label='Quantidade')
     
-    name.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
-    start.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'type':'date'})
+    name.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'placeholder':'Dê um título para sua Campanha'})
+    start.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
     end.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
-    description.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    description.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white','rows':'3', 'cols':'50', 'placeholder': 'Um resumo da campanha e seus objetivos'})
     #status.widget.attrs.update({'class':'statusField'})
     donee.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
-    item.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
-    volume.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
+    item.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'placeholder':'Escreva qual o ITEM da Doação'})
+    volume.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'placeholder':'Qual a QUANTIDADE que deseja doar?'})
 
 class DonationForm(forms.ModelForm):
     class Meta:
