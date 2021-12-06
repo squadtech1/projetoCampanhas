@@ -5,11 +5,6 @@ from django.utils.timezone import now
 
 
 class Campanha(models.Model):
-    
-    #class Meta:
-    #    constraints = [
-    #        models.UniqueConstraint(fields=['name'], name='unique name')
-    #    ]
 
     class Status(models.TextChoices):
         ENABLED = "Enabled"

@@ -16,12 +16,12 @@ class CampanhaForm(forms.Form):
     start = forms.DateField(
         initial=now,
         label="Começo",
-        widget=forms.DateInput(attrs={'type': 'date'})
+        widget=forms.DateInput()
         )
 
     end = forms.DateField(
         label="Fim",
-        widget=forms.DateInput(attrs={'type': 'date'})
+        widget=forms.DateInput()
     )
 
     description = forms.CharField(
