@@ -116,7 +116,7 @@ def doneeDecision(request, id, bool):
              )
         campanha.save()
  
-    return redirect('painel')
+    return redirect('doacoes-recebidas')
 
 @login_required
 def criarAtualNecessidade(request):
