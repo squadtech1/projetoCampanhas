@@ -174,7 +174,7 @@ def criarPost(request):
                 )
             post.save()
 
-            return redirect('home')
+            return redirect('campanha:userPosts')
 
         return render(request, 'new-post.html', context=context)
 
@@ -184,7 +184,7 @@ def deletarPost(request, id):
 
 	if request.method == 'POST':
 		publicacao.delete()
-		return redirect('painel')
+		return redirect('campanha:userPosts')
 
 
 @login_required

@@ -64,6 +64,6 @@ class DoneeNeedForm(forms.Form):
 class PostForm(forms.Form):
 
     post = forms.CharField(
-        label="New Post"
+        label="Escreva Aqui",
         )
-    post.widget.attrs.update({'class':"postField"})
+    post.widget.attrs.update({'class':'u-grey-10 u-input u-input-rectangle','rows':'3', 'cols':'50', 'placeholder': 'O que você quer dizer para o mundo?'})
