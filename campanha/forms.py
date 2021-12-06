@@ -56,9 +56,10 @@ class DonationForm(forms.ModelForm):
 class DoneeNeedForm(forms.Form):
 
     need = forms.CharField(
-        label="Atual Necessidade"
+        label="Atual Necessidade",
+        widget=forms.Textarea(attrs={'type': 'textarea'})
         )
-    need.widget.attrs.update({'class':"needField"})
+    need.widget.attrs.update({'class':'u-grey-10 u-input u-input-rectangle','rows':'3', 'cols':'50', 'placeholder': 'Em resumo, descreva o que você mais precisa'})
 
 class PostForm(forms.Form):
 

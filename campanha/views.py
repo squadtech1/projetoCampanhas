@@ -83,7 +83,7 @@ def deletarCampanha(request, id):
 
 	if request.method == 'POST':
 		campanha.delete()
-		return redirect('home')
+		return redirect('minhas-campanhas')
 
 	context = {'campanha':campanha}
 	return render(request, 'deletar-campanha.html', context)
@@ -141,7 +141,7 @@ def criarAtualNecessidade(request):
                     )
                 atualNecessidade.save()
 
-                return redirect('home')
+                return redirect('atual-necessidade')
 
             except:
                 atualNecessidade = DoneeNeed(
