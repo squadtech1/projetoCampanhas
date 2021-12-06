@@ -7,14 +7,6 @@ from accounts.models import User
 from .models import Campanha, DonationItem
 from django.utils.timezone import now
 
-'''
-CAMPANHA_STATUS = (
-    ("ENABLED", "Enabled"),
-    ("DISABLED", "Disabled"),
-     ("PENDING_DONEE_CONFIRMATION", "Pending Donee Confirmation")
-)
-'''
-
 class CampanhaForm(forms.Form):
 
     name = forms.CharField(
@@ -38,8 +30,6 @@ class CampanhaForm(forms.Form):
         widget=forms.Textarea(attrs={'type': 'textarea'})
         )
 
-    #status = forms.ChoiceField(choices = CAMPANHA_STATUS)
-
     donee = forms.ModelChoiceField(
         queryset=User.objects.filter(role="Beneficiário").order_by("username"),
         label="Beneficiado"
@@ -54,7 +44,6 @@ class CampanhaForm(forms.Form):
     start.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
     end.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
     description.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white','rows':'3', 'cols':'50', 'placeholder': 'Um resumo da campanha e seus objetivos'})
-    #status.widget.attrs.update({'class':'statusField'})
     donee.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white'})
     item.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'placeholder':'Escreva qual o ITEM da Doação'})
     volume.widget.attrs.update({'class':'u-border-1 u-border-grey-30 u-input u-input-rectangle u-white', 'placeholder':'Qual a QUANTIDADE que deseja doar?'})

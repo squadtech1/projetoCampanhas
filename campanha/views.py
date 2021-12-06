@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from campanha.models import Campanha, DonationItem, DoneeNeed, Post
 from .forms import CampanhaForm, DonationForm, DoneeNeedForm, PostForm
 from accounts.models import User
+from datetime import datetime
 
 
 @login_required
@@ -44,7 +45,7 @@ def criarCampanha(request):
 @login_required
 def editarCampanha(request, id):
     campanha = get_object_or_404(Campanha, pk=id)
-    print(campanha.status)
+    print(campanha.start)
     donationItem = get_object_or_404(DonationItem, campanha_id=campanha.id)
     initial = {'name':campanha.name, 'start':campanha.start, 'end':campanha.end, 'description':campanha.description, 'status':campanha.status, 'donee':campanha.donee, 'item':donationItem.item, 'volume':donationItem.volume}
     form = CampanhaForm(initial=initial)

@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from accounts.models import User
-from campanha.models import Campanha
-
+from campanha.models import Campanha, DonationItem
 
 def home(request):
     return render(request, 'home.html')
@@ -11,8 +10,10 @@ def home(request):
 def listaCampanhas(request):
     user = request.user
     campanhas = Campanha.objects.filter(donor_id=user.id)
+    donationItems = DonationItem.objects.all()
     context = {
-        'campanhas': campanhas
+        'campanhas': campanhas,
+        'donationItems': donationItems
     }
     return render(request, 'lista-campanhas.html', context=context)
 
@@ -20,9 +21,11 @@ def listaCampanhas(request):
 def doacoesRecebidas(request):
     user = request.user
     campanhas = Campanha.objects.filter(donee_id=user.id)
+    donationItems = DonationItem.objects.all()
     print(campanhas)
     context = {
-        'campanhas': campanhas
+        'campanhas': campanhas,
+        'donationItems': donationItems
     }
     return render(request, 'doacoes-recebidas.html', context=context)
 

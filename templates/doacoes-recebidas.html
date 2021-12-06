@@ -201,8 +201,12 @@ C80.2,0,80.1,0,80,0z"></path>
                                 <li><strong>Criador por:</strong> {{ campanha.donor.first_name }}</li>
                                 <li><strong>E-mail:</strong> {{ campanha.donor.email }}</li>
                                 <li><strong>Endereço:</strong> {{ campanha.donor.street }} - {{ campanha.donor.state }}</li>
-                                <li><strong>Item a ser doado:</strong> {{ campanha.item }}</li>
-                                <li><strong>Quantidade:</strong> {{ campanha.volume }}</li>
+                                {% for donation in donationItems %}
+                                    {% if donation.campanha == campanha %}
+                                        <li><strong>Item a ser doado:</strong> {{ donation.item }}</li>
+                                        <li><strong>Quantidade:</strong> {{ donation.volume }}</li>
+                                    {% endif %}
+                                {% endfor %}
                             </ul>
 
                         </div>
