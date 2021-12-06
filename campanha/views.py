@@ -190,8 +190,10 @@ def deletarPost(request, id):
 @login_required
 def listaUserPosts(request):
     posts = Post.objects.filter(user_id=request.user.id)
+    postsLength = len(posts)
     context = {
-        "posts": posts
+        "posts": posts,
+        'postsLength': postsLength
     }
 
     return render(request, "lista-user-posts.html", context=context)

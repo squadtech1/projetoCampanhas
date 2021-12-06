@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from accounts.models import User
-from campanha.models import Campanha, DonationItem
+from campanha.models import Campanha, DonationItem, DoneeNeed, Post
 
 def home(request):
     return render(request, 'home.html')
@@ -35,6 +35,19 @@ def listaBeneficiados(request):
         'beneficiados': beneficiados
     }
     return render(request, 'lista-beneficiados.html', context=context)
+
+def userProfile(request, id):
+    print(id)
+    userProfile = get_object_or_404(User, pk=id)
+    print(userProfile.id)
+    doneeNeed = DoneeNeed.objects.filter(donee = userProfile.id)
+    userPosts = Post.objects.filter(user_id = userProfile.id)
+    context = {
+        'userProfile': userProfile,
+        'doneeNeed': doneeNeed,
+        'userPosts': userPosts
+    }
+    return render(request, 'perfil.html', context=context)
 
 def saibaMais(request):  
     return render(request, "saiba-mais.html")

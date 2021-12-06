@@ -168,14 +168,14 @@
 
 
         <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
-        data-href="{% url 'lista-beneficiados' %}">
+        data-href="{% url 'userProfile' user.id %}">
         <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
           <div class="u-container-style u-group u-group-1">
             <div
               class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
               <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
                 Meu Perfil Público</h4>
-              <a href="{% url 'lista-beneficiados' %}"
+              <a href="{% url 'userProfile' user.id %}"
                 class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-2-base u-btn-1">
                 Clique Aqui</a>
             </div>
