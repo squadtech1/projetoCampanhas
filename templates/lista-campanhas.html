@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}DoaAção | Minhas Campanhas Ativas{% endblock %}
+{% block title %}DoaAção | Minhas Campanhas{% endblock %}
 {% block content %}
 
 
@@ -74,7 +74,7 @@ C80.2,0,80.1,0,80,0z"></path>
             <div class="u-container-layout">
                 <h1 class="u-align-center-xl u-text u-text-body-alt-color u-text-default u-text-1">
 
-                    Campanhas Ativas
+                    Minhas Campanhas
 
                 </h1>
                 <div class="u-border-7 u-border-palette-1-base u-line u-line-horizontal u-line-1"></div>
@@ -139,7 +139,20 @@ C80.2,0,80.1,0,80,0z"></path>
     </div>
 </section>
 
-<br><br>
+<br>
+
+<section class="u-clearfix u-section-btn-nova-campanha">
+    <div class="u-align-left u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-group u-group-1">
+        <div class="u-container-layout">
+          <img class="u-image u-image-circle u-image-1" src="/static/images/painel_icone_nova_campanha.svg" alt="" data-image-width="1037" data-image-height="351">
+          <a href="{% url 'campanha:criar' %}" class="u-active-none u-border-2 u-border-active-palette-3-base u-border-hover-palette-3-base u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-black u-text-hover-palette-3-base u-btn-1">CRIAR CAMPANHA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<br>
 
 {% for campanha in campanhas %}
 

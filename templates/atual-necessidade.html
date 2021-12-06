@@ -1,22 +1,69 @@
+
+
+
+
+
+
+
+
 {% extends 'base.html' %}
 
-{% block title %}Doação{% endblock %}
+{% load crispy_forms_tags %}
 
-    {% block content %}
+{% block title %}DoaAção | Atual Necessidade{% endblock %}
 
-        <h1>Atual Necessidade</h1>
+{% block content %}
 
-        {{necessidade}}
+<section class="u-clearfix u-palette-2-base u-section-3" id="sec-72ac">
+    <div class="u-clearfix u-sheet u-sheet-1"></div>
+</section>
 
-        <form action="." method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Salvar">
-        </form>
+<form action="." method="post">
+    
+    {% csrf_token %}
 
-        <a href="{% url 'home' %}" class="btn btn-info">Página Inicial</a>
+    <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="FORM">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <br>
+            <div class="u-align-center u-container-style u-group u-radius-5 u-shape-round u-white u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <img class="u-image" src="/static/images/atual_necessidade_icone.svg" alt="">
+                    <h3 class="u-text u-text-default u-text-1">
+                        Necessidades
+                    </h3>
+                    <img class="u-image" src="/static/images/form_divider.svg" alt="">
+                    <p class="u-text u-text-2">
+                        Você tem alguma necessidade específica ou está precisando de doações de um determinado tipo?<br>
+                    </p>
+                   
+                    <div id="div_name" class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{ form.need.label }} </h6>
+                        {{ form.need }} 
+                    </div>
+                                      
 
-    {% endblock %}
+                    <div class="u-align-center u-form-group u-form-submit">
+                        <button type="submit"
+                            class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">SALVAR</button>
+                    </div>
+                    <a href="{% url 'painel' %}" class="u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-login-control u-login-forgot-password u-none u-text-black u-text-hover-palette-2-base u-btn-2">
+                    CANCELAR</a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+    </section>
+</form>
 
-    {% block footer %}
-    {% endblock %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+ 
