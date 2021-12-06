@@ -21,8 +21,8 @@ class Campanha(models.Model):
     end = models.DateField()
     description = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(_('Status'), max_length = 50, choices = Status.choices, default = Status.ENABLED)
-    donor = models.ForeignKey("accounts.User", on_delete=PROTECT,null=True, related_name="donor")
-    donee = models.ForeignKey("accounts.User", on_delete=PROTECT,null=True, related_name="donee")
+    donor = models.ForeignKey("accounts.User", on_delete=CASCADE,null=True, related_name="donor")
+    donee = models.ForeignKey("accounts.User", on_delete=CASCADE,null=True, related_name="donee")
 
     def __str__(self):
         return self.name
