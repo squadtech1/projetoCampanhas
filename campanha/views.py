@@ -111,8 +111,8 @@ def doneeDecision(request, id, bool):
                 end = campanha.end, 
                 description = campanha.description, 
                 status = Campanha.Status.DISABLED,
-                donor = campanha.donor.id, 
-                donee = campanha.donee.id
+                donor = campanha.donor, 
+                donee = campanha.donee
              )
         campanha.save()
  
