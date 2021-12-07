@@ -35469,6 +35469,12 @@ a.u-link.u-text-hover-grey-90:hover {
     margin-top: 13px;
     margin-bottom: 19px;
   }
+}.u-header .u-image-2 {
+  width: 38px;
+  height: 38px;
+  background-image: url("/static/images/painel_perfil_icon.svg");
+  background-position: 50% 50%;
+  margin: -90px 130px 0 auto;
 }
 
  /*begin-variables base-font-size*/ 
