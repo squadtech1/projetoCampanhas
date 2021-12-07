@@ -4,8 +4,9 @@
 
 {% block content %}
     
-  <section class="u-align-center-sm u-align-center-xs u-clearfix u-section-13" id="sec-ad4b">
-    <div class="u-clearfix u-sheet u-sheet-1">
+  <section class="u-align-center-sm u-align-center-xs u-clearfix u-section-13">
+    <div class="u-container-layout u-valign-middle">
+      <div class="u-clearfix u-sheet u-sheet-1 u-container-layout u-valign-middle">
       <img class="u-image u-image-default u-image-1" src="/static/images/coracao.svg" alt="" data-image-width="546"
         data-image-height="473">
       <div class="u-shape u-shape-svg u-text-palette-5-light-3 u-shape-1">
@@ -145,28 +146,5 @@ C160,148.8,156.7,145.5,152.7,145.5z"></path>
       </div>
     </div>
   </section>
-  <section class="u-clearfix u-palette-5-light-3 u-section-14" id="sec-eaab">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <div class="u-align-center u-container-style u-expanded-width-xs u-group u-group-1">
-        <div class="u-container-layout">
 
-         <!-- BOTÕES EM DESTAQUE ABAIXO DA ILUSTRAÇÃO -->
-          
-        {% if user.role == 'Donor'%}
-        <a href="{% url 'campanha:criar' %}" class="u-align-center-xs u-border-none u-btn u-button-style u-hover-palette-1-light-1 u-palette-1-base u-btn-1">QUERO DOAR</a>
-        {% endif %}
-        {% if user.is_authenticated %}
-        {% else %}
-        <a href="#" class="u-align-center-xs u-border-none u-btn u-button-style u-hover-palette-1-light-1 u-palette-1-base u-btn-1">FALE CONOSCO</a>
-        {% endif %}
-        <a href="{% url 'lista-beneficiados' %}" class="u-border-none u-btn u-button-style u-hover-palette-2-light-1 u-palette-2-base u-btn-2">VER BENEFICIADOS</a>
-        
-      </div>
-      </div>
-    </div>
-  </section>
-
-{% endblock %}
-
-{% block footer %}
 {% endblock %}

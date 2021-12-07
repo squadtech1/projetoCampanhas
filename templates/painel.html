@@ -14,7 +14,7 @@
     <div class="u-container-layout">
       <h3
         class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-1">
-        {{user.username}}</h3>
+        {{user.first_name}}</h3>
       {% if user.role == 'Doador' %}
       <h6
         class="u-align-left-xl u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-2-base u-text-2">
@@ -167,6 +167,8 @@
         </div>
 
 
+        {% if user.role == 'Beneficiário' %}
+
         <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1"
         data-href="{% url 'userProfile' user.id %}">
         <div class="u-container-layout u-similar-container u-valign-bottom-lg u-container-layout-1">
@@ -185,6 +187,9 @@
           <div class="u-palette-3-base u-expanded-width u-radius-6 u-shape u-shape-round u-shape-1"></div>
         </div>
       </div>
+
+      {% endif %}
+
 
 
       </div>

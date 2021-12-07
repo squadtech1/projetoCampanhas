@@ -92,7 +92,7 @@
               href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas<br><span style="color:white;font-size:10px;">.</span></a>
             </li>
             {% endif %}
-            {% if user.role == 'Donee' %}
+            {% if user.role == 'Beneficiário' %}
             <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
               href="{% url 'doacoes-recebidas' %}" style="padding: 10px 0px;">Doações Recebidas<br><span style="color:white;font-size:10px;">.</span></a>
             </li>
@@ -100,17 +100,6 @@
             <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
               href="{% url 'contato' %}" style="padding: 10px 0px;">Contato<br><span style="color:white;font-size:10px;">.</span></a>
           </li>
-
-            <!-- 
-            - Links Visíveis no Desktop            
-            - Repetir <li> abaixo para cada item do menu
-            
-
-            <li class="u-nav-item"><a class="u-border-2 u-border-active-palette-2-base u-border-hover-custom-color-2 u-border-no-left u-border-no-right u-border-no-bottom u-button-style u-nav-link u-text-active-palette-2-base u-text-grey-90 u-text-hover-grey-90"
-                href="{% url 'minhas-campanhas' %}" style="padding: 10px 0px;">Minhas Campanhas</a>
-            </li>
-            -->
-
           </ul>
         </div>
 
@@ -122,16 +111,6 @@
               <div class="u-menu-close"></div>
               <ul
                 class="u-align-center u-nav u-popupmenu-items u-spacing-0 u-text-hover-palette-3-light-1 u-unstyled u-nav-2">
-
-                <!-- 
-                - Links Visíveis no MOBILE            
-                - Repetir <li> abaixo para cada item do menu
-
-                <li class="u-nav-item">
-                  <a class="u-button-style u-nav-link" href="{% url 'home' %}" style="padding: 10px 0px;">Link</a>
-                </li>
-
-                -->
 
                 <li class="u-nav-item">
                   <a class="u-button-style u-nav-link" href="/home" style="padding: 10px 0px;">Home</a>
@@ -218,6 +197,154 @@
         src="/static/images/squadtech.svg" alt="" data-image-width="609" data-image-height="59">
     </div>
   </footer>
+
+  <section class="u-align-center u-clearfix u-cookies-consent u-grey-80 u-cookies-consent">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+          <div class="u-layout-row">
+            <div class="u-container-style u-layout-cell u-left-cell u-size-43-md u-size-43-sm u-size-43-xs u-size-46-lg u-size-46-xl u-layout-cell-1">
+              <div class="u-container-layout u-valign-middle u-container-layout-1">
+                <h3 class="u-text u-text-default u-text-1">Cookies &amp; Privacidade</h3>
+                <p><small>Este site utiliza cookies para fornecer a melhor experiência possível para você, além de monitorar e analisar o tráfego no nosso website. Suas preferências podem ser alteradas a qualquer momento nas definições de cookies de seu navegador.</small> </p>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-14-lg u-size-14-xl u-size-17-md u-size-17-sm u-size-17-xs u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-valign-top-sm u-valign-top-xs u-container-layout-2">
+                <a href="###" class="u-btn u-button-confirm u-button-style u-palette-1-base u-btn-1">Li e Aceito</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <style>
+  
+.u-cookies-consent {
+background-image: none;
+}
+
+.u-cookies-consent .u-sheet-1 {
+min-height: 212px;
+}
+
+.u-cookies-consent .u-layout-wrap-1 {
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+.u-cookies-consent .u-layout-cell-1 {
+min-height: 152px;
+}
+
+.u-cookies-consent .u-container-layout-1 {
+padding: 30px 60px;
+}
+
+.u-cookies-consent .u-text-1 {
+margin-top: 0;
+margin-right: 20px;
+margin-bottom: 0;
+}
+
+.u-cookies-consent .u-text-2 {
+margin: 8px 158px 0 0;
+}
+
+.u-cookies-consent .u-layout-cell-2 {
+min-height: 152px;
+}
+
+.u-cookies-consent .u-container-layout-2 {
+padding: 30px;
+}
+
+.u-cookies-consent .u-btn-1 {
+margin: 0 auto 0 0;
+}
+
+@media (max-width: 1199px) {
+.u-cookies-consent .u-sheet-1 {
+  min-height: 131px;
+}
+
+.u-cookies-consent .u-layout-cell-1 {
+  min-height: 125px;
+}
+
+.u-cookies-consent .u-text-1 {
+  margin-right: 0;
+}
+
+.u-cookies-consent .u-text-2 {
+  margin-right: 5px;
+}
+
+.u-cookies-consent .u-layout-cell-2 {
+  min-height: 125px;
+}
+}
+
+@media (max-width: 991px) {
+.u-cookies-consent .u-sheet-1 {
+  min-height: 106px;
+}
+
+.u-cookies-consent .u-layout-cell-1 {
+  min-height: 100px;
+}
+
+.u-cookies-consent .u-container-layout-1 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.u-cookies-consent .u-text-2 {
+  margin-right: 0;
+}
+
+.u-cookies-consent .u-layout-cell-2 {
+  min-height: 100px;
+}
+}
+
+@media (max-width: 767px) {
+.u-cookies-consent .u-sheet-1 {
+  min-height: 225px;
+}
+
+.u-cookies-consent .u-layout-cell-1 {
+  min-height: 154px;
+}
+
+.u-cookies-consent .u-container-layout-1 {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+
+.u-cookies-consent .u-layout-cell-2 {
+  min-height: 65px;
+}
+
+.u-cookies-consent .u-container-layout-2 {
+  padding: 10px;
+}
+}
+
+@media (max-width: 575px) {
+.u-cookies-consent .u-sheet-1 {
+  min-height: 121px;
+}
+
+.u-cookies-consent .u-layout-cell-1 {
+  min-height: 100px;
+}
+
+.u-cookies-consent .u-layout-cell-2 {
+  min-height: 15px;
+}
+}</style></section>
 
 </body>
 
