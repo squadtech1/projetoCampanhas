@@ -120,40 +120,48 @@ def doneeDecision(request, id, bool):
 
 @login_required
 def criarAtualNecessidade(request):
-    form = DoneeNeedForm()
-    context = {
+
+    try:
+        need = get_object_or_404(DoneeNeed, donee=request.user.id)
+        form = DoneeNeedForm(initial={'need': need.need})
+        context = {
             'form': form
         }
-
-    if request.method == "GET":   
-        return render(request, 'atual-necessidade.html', context=context)
-    else:
-        form = DoneeNeedForm(request.POST)
-        if form.is_valid():
-
-            try:
-                atualNecessidadeBD = get_object_or_404(DoneeNeed, donee_id=request.user.id)
+        if request.method == 'GET':
+            return render(request, 'atual-necessidade.html', context=context)
+        else:
+            form = DoneeNeedForm(request.POST, instance=request.user)   
+            if form.is_valid():
+                need = get_object_or_404(DoneeNeed, donee=request.user.id)
+                doneeNeed = DoneeNeed(
+                    id = need.id,
+                    need = form.cleaned_data["need"], 
+                    donee = request.user)
+                doneeNeed.save()
+                return redirect('painel')
             
-                atualNecessidade = DoneeNeed(
-                    id = atualNecessidadeBD.id,
-                    need = form.cleaned_data["need"],
-                    donee = request.user
-                    )
-                atualNecessidade.save()
-
-                return redirect('atual-necessidade')
-
-            except:
-                atualNecessidade = DoneeNeed(
-                    need = form.cleaned_data["need"],
-                    donee = request.user
-                )
-                atualNecessidade.save()
-
-                return redirect('home')
-
-        return render(request, 'atual-necessidade.html', context=context)
-
+            else:
+                return render(request, 'atual-necessidade.html', context=context)
+    except:
+        form = DoneeNeedForm()
+        context = {
+            'form': form
+        }
+        if request.method == 'GET':
+            return render(request, 'atual-necessidade.html', context=context)
+        else:
+            form = DoneeNeedForm(request.POST)   
+            if form.is_valid():
+                print("aqui")
+                doneeNeed = DoneeNeed(
+                need = form.cleaned_data["need"], 
+                donee = request.user)
+                doneeNeed.save()
+                
+                return redirect('painel')
+            
+            else:
+                return render(request, 'atual-necessidade.html', context=context)
 
 @login_required
 def criarPost(request):

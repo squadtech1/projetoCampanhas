@@ -4,7 +4,7 @@ from django.db.models import fields
 from django.forms import widgets
 
 from accounts.models import User
-from .models import Campanha, DonationItem
+from .models import Campanha, DonationItem, DoneeNeed
 from django.utils.timezone import now
 
 class CampanhaForm(forms.Form):
@@ -53,14 +53,22 @@ class DonationForm(forms.ModelForm):
         model = DonationItem
         fields = '__all__'
 
-class DoneeNeedForm(forms.Form):
-
+class DoneeNeedForm(forms.ModelForm):
+    class Meta:
+        model = DoneeNeed
+        fields = ['need']
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['need'].widget.attrs.update({'class':'u-grey-10 u-input u-input-rectangle','rows':'3', 'cols':'50', 'placeholder': 'Em resumo, descreva o que você mais precisa'})
+        self.fields['need'].label = "Atual necessidade"
+'''
     need = forms.CharField(
         label="Atual Necessidade",
-        widget=forms.Textarea(attrs={'type': 'textarea'})
+        widget=forms.Textarea()
         )
-    need.widget.attrs.update({'class':'u-grey-10 u-input u-input-rectangle','rows':'3', 'cols':'50', 'placeholder': 'Em resumo, descreva o que você mais precisa'})
-
+    need.widget.attrs.update()
+'''
 class PostForm(forms.Form):
 
     post = forms.CharField(

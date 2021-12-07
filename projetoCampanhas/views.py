@@ -39,7 +39,6 @@ def listaBeneficiados(request):
 def userProfile(request, id):
     print(id)
     userProfile = get_object_or_404(User, pk=id)
-    print(userProfile.id)
     doneeNeed = DoneeNeed.objects.filter(donee = userProfile.id)
     userPosts = Post.objects.filter(user_id = userProfile.id)
     context = {
