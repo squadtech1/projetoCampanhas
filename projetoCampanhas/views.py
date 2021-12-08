@@ -40,7 +40,7 @@ def userProfile(request, id):
     print(id)
     userProfile = get_object_or_404(User, pk=id)
     doneeNeed = DoneeNeed.objects.filter(donee = userProfile.id)
-    userPosts = Post.objects.filter(user_id = userProfile.id)
+    userPosts = Post.objects.filter(user_id = userProfile.id).order_by('date')[::-1]
     context = {
         'userProfile': userProfile,
         'doneeNeed': doneeNeed,
