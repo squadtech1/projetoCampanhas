@@ -197,7 +197,7 @@ def deletarPost(request, id):
 
 @login_required
 def listaUserPosts(request):
-    posts = Post.objects.filter(user_id=request.user.id)
+    posts = Post.objects.filter(user_id=request.user.id).order_by('date')[::-1]
     postsLength = len(posts)
     context = {
         "posts": posts,
@@ -210,7 +210,7 @@ def listaUserPosts(request):
 #ver onde ficará essa view
 @login_required
 def listarPostagens(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('date')[::-1]
     context = {
         "posts": posts
     }
