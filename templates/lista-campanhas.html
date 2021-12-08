@@ -155,49 +155,165 @@ C80.2,0,80.1,0,80,0z"></path>
 
 
 {% for campanha in campanhas %}
-
-<!-- pending -->
-
 {% if campanha.status == 'Pending Donee Confirmation' %}
-{{campanha}}
-<!-- ativa -->
-{% elif campanha.status == 'Enabled' %}
-{{campanha}}
-<!-- inativa -->
-{% else %}
-{{campanha}}
-{% endif  %}
 
-<section class="u-clearfix u-section-minhas-campanhas">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <div class="u-expanded-width u-list u-list-1">
-        <div class="u-repeater u-repeater-1">
-          <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1">
-            <div class="u-container-layout u-similar-container u-container-layout-1">
-              <div class="u-align-center-xs u-align-right-lg u-align-right-md u-align-right-sm u-container-style u-group u-group-1">
-                <div class="u-container-layout">
-                  <a href="{% url 'campanha:deletar' campanha.id %}" class="u-btn u-button-style u-btn-1">Apagar</a>
-                  <a href="{% url 'campanha:editar' campanha.id %}" class="u-border-none u-btn u-button-style u-custom-color-7 u-hover-none u-btn-2">Editar</a>
-                </div>
-              </div>
-              <div class="u-container-style u-group u-group-2">
-                <div class="u-container-layout u-valign-middle">
-                  <h4 class="u-text u-text-palette-2-base u-text-1">{{ campanha.name }}
-                  </h4>
-                  <p class="u-text u-text-2">
-                    <span style="font-weight: 700;">Encerra:</span> {{ campanha.end }}
-                  </p>
-                </div>
-              </div>
-            </div>
+<!-- PENDENTE -->
+
+<section class="u-clearfix u-minhas-campanhas-pendentes">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="/static/images/minhas_campanhas_pendentes.svg" alt="" data-image-width="200" data-image-height="200">
+            <p class="u-text u-text-default u-text-1">STATUS</p>
+            <h4 class="u-text u-text-default u-text-2"><span style="color:rgb(133, 150, 163)">PENDENTE</span></h4>
+            <a href="{% url 'campanha:editar' campanha.id %}" class="u-align-left-xs u-border-none u-btn u-button-style u-custom-color-7 u-custom-item u-hover-custom-color-7 u-btn-1">EDITAR CAMPANHA</a>
+            <a href="{% url 'campanha:deletar' campanha.id %}" class="u-align-right-xs u-border-none u-btn u-button-style u-hover-palette-2-dark-1 u-btn-2">EXCLUIR CAMPANHA</a>
+            <div class="u-border-1 u-border-grey-30 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+            <h4 class="u-text u-text-default u-text-3">{{ campanha.name }}</h4>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="u-align-center u-clearfix u-section-detalhes-campanha">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-accordion u-collapsed-by-default u-spacing-3 u-accordion-1">
+      <div class="u-accordion-item">
+        <a class="u-radius-6 u-accordion-link u-button-style u-grey-10  u-text-active-black u-text-black u-text-hover-black u-accordion-link-1" id="link-accordion-0781" aria-controls="accordion-0781" aria-selected="false">
+          <span class="u-accordion-link-text">DESTALHES DA DOAÇÃO</span><span class="u-accordion-link-icon u-icon u-icon-rounded u-spacing-10 u-text-palette-2-base u-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efcb"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-efcb" style="enable-background:new 0 0 512 512;"><g><g><path d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0    c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878    l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"></path></g></g></svg></span></a>
+        <div class="u-accordion-pane u-border-1 u-border-grey-10 u-border-no-top u-container-style u-accordion-pane-1 u-radius-6" id="accordion-0781" aria-labelledby="link-accordion-0781">
+          <div class="u-container-layout u-valign-top u-container-layout-1">
+              <ul>
+                <li><strong>Campanha Proposta para:</strong> {{ campanha.donee.first_name }}</li>
+                <li><strong>Perfil: </strong><a href="{% url 'userProfile' campanha.donee.id %}"><strong>Clique Aqui</strong></a></li>
+                  <li><strong>Endereço:</strong> {{ campanha.donee.street }} - {{ campanha.donee.state }}</li>
+                  {% for donation in donationItems %}
+                      {% if donation.campanha == campanha %}
+                          <li><strong>Item Proposto:</strong> {{ donation.item }}</li>
+                          <li><strong>Quantidade Proposta:</strong> {{ donation.volume }}</li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+{% elif campanha.status == 'Enabled' %}
+
+<!-- Aceita -->
+
+<section class="u-clearfix u-minhas-campanhas-aceitas">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="/static/images/minhas_campanhas_aceitas.svg" alt="" data-image-width="200" data-image-height="200">
+            <p class="u-text u-text-default u-text-1">STATUS</p>
+            <h4 class="u-text u-text-custom-color-7 u-text-default u-text-2">ACEITA</h4>
+            <div class="u-border-none u-btn u-button-style u-hover-grey-15 u-white u-btn-1">ações não permitidas</div>
+            <div class="u-border-1 u-border-grey-30 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+            <h4 class="u-text u-text-default u-text-3">{{ campanha.name }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="u-align-center u-clearfix u-section-detalhes-campanha">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-accordion u-collapsed-by-default u-spacing-3 u-accordion-1">
+      <div class="u-accordion-item">
+        <a class="u-radius-6 u-accordion-link u-button-style u-grey-10  u-text-active-black u-text-black u-text-hover-black u-accordion-link-1" id="link-accordion-0781" aria-controls="accordion-0781" aria-selected="false">
+          <span class="u-accordion-link-text">DESTALHES DA DOAÇÃO</span><span class="u-accordion-link-icon u-icon u-icon-rounded u-spacing-10 u-text-palette-2-base u-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efcb"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-efcb" style="enable-background:new 0 0 512 512;"><g><g><path d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0    c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878    l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"></path></g></g></svg></span></a>
+        <div class="u-accordion-pane u-border-1 u-border-grey-10 u-border-no-top u-container-style u-accordion-pane-1 u-radius-6" id="accordion-0781" aria-labelledby="link-accordion-0781">
+          <div class="u-container-layout u-valign-top u-container-layout-1">
+              <ul>
+                <li><strong><span style="color:#6eb398">Campanha Aceita por:</span></strong> {{ campanha.donee.first_name }}</li>
+                <li><strong><span style="color:#6eb398">Perfil: </span></strong><a href="{% url 'userProfile' campanha.donee.id %}"><strong>Clique Aqui</strong></a></li>
+                  <li><strong><span style="color:#6eb398">Endereço:</span></strong> {{ campanha.donee.street }} - {{ campanha.donee.state }}</li>
+                  {% for donation in donationItems %}
+                      {% if donation.campanha == campanha %}
+                          <li><strong><span style="color:#6eb398">Doação Aceita:</span></strong> {{ donation.item }}</li>
+                          <li><strong><span style="color:#6eb398">Quantidade Aceita:</span></strong> {{ donation.volume }}</li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+{% else %}
+
+<!-- Recusada -->
 
 
-  {% endfor %}
+<section class="u-clearfix u-minhas-campanhas-recusadas">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-container-style u-grey-5 u-list-item u-radius-6 u-repeater-item u-shape-round u-list-item-1">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="/static/images/minhas_campanhas_recusadas.svg" alt="" data-image-width="200" data-image-height="200">
+            <p class="u-text u-text-default u-text-1">STATUS</p>
+            <h4 class="u-text u-text-default u-text-2"><span style="color:#e95374">RECUSADA</span></h4>
+            <a href="{% url 'campanha:deletar' campanha.id %}" class="u-border-none u-btn u-button-style u-hover-palette-2-dark-1 u-palette-2-base u-btn-1">EXCLUIR CAMPANHA</a>
+            <div class="u-border-1 u-border-grey-30 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+            <h4 class="u-text u-text-default u-text-3">{{ campanha.name }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="u-align-center u-clearfix u-section-detalhes-campanha">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-accordion u-collapsed-by-default u-spacing-3 u-accordion-1">
+      <div class="u-accordion-item">
+        <a class="u-radius-6 u-accordion-link u-button-style u-grey-10  u-text-active-black u-text-black u-text-hover-black u-accordion-link-1" id="link-accordion-0781" aria-controls="accordion-0781" aria-selected="false">
+          <span class="u-accordion-link-text">DESTALHES DA DOAÇÃO</span><span class="u-accordion-link-icon u-icon u-icon-rounded u-spacing-10 u-text-palette-2-base u-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efcb"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-efcb" style="enable-background:new 0 0 512 512;"><g><g><path d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0    c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878    l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"></path></g></g></svg></span></a>
+        <div class="u-accordion-pane u-border-1 u-border-grey-10 u-border-no-top u-container-style u-accordion-pane-1 u-radius-6" id="accordion-0781" aria-labelledby="link-accordion-0781">
+          <div class="u-container-layout u-valign-top u-container-layout-1">
+              <ul>
+                <li><strong><span style="color:#e95374">Campanha Recusada por:</span></strong> {{ campanha.donee.first_name }}</li>
+                <li><strong><span style="color:#e95374">Perfil:</span> </strong><a href="{% url 'userProfile' campanha.donee.id %}">Clique Aqui</a></li>
+                  <li><strong><span style="color:#e95374">Endereço:</span></strong> {{ campanha.donee.street }} - {{ campanha.donee.state }}</li>
+                  {% for donation in donationItems %}
+                      {% if donation.campanha == campanha %}
+                          <li><strong><span style="color:#e95374">Doação Recusada:</span></strong> {{ donation.item }}</li>
+                          <li><strong><span style="color:#e95374">Quantidade Recusada:</span></strong> {{ donation.volume }}</li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+
+{% endif  %}
+
+{% endfor %}
 
 {% endblock %}
 
