@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'projetoCampanhas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'doaacaov4',
+        'USER': 'doaacao',
+        'PASSWORD': 'Glmtv@2021',
+        'HOST': 'doaacao.postgres.database.azure.com',
+        'PORT': '5432',
     }
 }
 
@@ -137,8 +142,9 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = "accounts/login"
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGIN_REDIRECT_URL = reverse_lazy('painel')
+LOGOUT_REDIRECT_URL = reverse_lazy('painel')
 
-LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = "accounts.User"

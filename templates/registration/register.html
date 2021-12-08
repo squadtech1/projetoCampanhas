@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}DoaAção | Cadastro{% endblock %}
+
+{% block content %}
+
+{{isCpfCnpjValid}}
+
+<section class="u-clearfix u-palette-2-base u-section-3" id="sec-72ac">
+    <div class="u-clearfix u-sheet u-sheet-1"></div>
+</section>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <input type="hidden" name="next" value="{{ next }}">
+
+    <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="FORM">
+        <br>
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <br>
+            <div class="u-align-center u-container-style u-group u-radius-5 u-shape-round u-white u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <img class="u-image" src="/static/images/register_icon.svg" alt="">
+                    <h3 class="u-text u-text-default u-text-1">
+                        CADASTRE-SE
+                    </h3>
+                    <img class="u-image" src="/static/images/form_divider.svg" alt="">
+                    <p class="u-text u-text-2">
+                        Para <strong>Doar</strong> ou <strong>Criar uma Campanha</strong>,<br>é necessário o cadastro em
+                        nosso sistema!
+                    </p>
+
+                    {% if form.errors %}
+                    <section class="u-clearfix u-section-10" id="">
+                        <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+                            <div class="u-clearfix u-palette-1-light-3 u-layout-wrap ">
+                                <div class="u-layout">
+                                    <div
+                                        class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                                            <h4>Dados Incorretos</h4>
+                                            <p class="u-align-left">Verifique os Campos listados abaixo:</p>
+                                            <small class="u-align-left">
+                                                <ul>
+                                                    {{form.errors}}
+                                                </ul>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br>
+                    {% endif %}
+
+
+
+                    <div id="div_name" class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.first_name.label}}</h6>
+                        {{form.first_name}}
+                    </div>
+                    <small class="u-align-left u-text u-text-default u-text-palette-3-dark-1 u-text-2">
+                        <ul>
+                            <li>Seu nome - caso Pessoa Física, ou sua Razão Social - caso CNPJ.</li>
+                        </ul>
+                    </small>
+
+                    <div class="u-form-select-wrapper">
+                        <h6 class="u-align-left">{{form.role.label}}</h6>
+                        {{form.role}}
+                        <br>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
+                            class="u-caret u-valign-middle">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+
+
+                    <div id="div_id_username" class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.username.label}}</h6>
+                        {{form.username}}
+                    </div>
+                    <small class="u-align-left u-text u-text-default u-text-palette-3-dark-1 u-text-2">
+                        <ul>
+                            <li>O usuário deve 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.</li>
+                        </ul>
+                    </small>
+
+                    <div class="u-form-select-wrapper">
+                        <h6 class="u-align-left">{{form.entity_type.label}}</h6>
+                        {{form.entity_type}}
+                        <br>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+
+                    <div id="div_cpf_cnpj" class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.cpf_cnpj.label}}</h6>
+                        {{form.cpf_cnpj}}
+                    </div>
+                    <small class="u-align-left u-text u-text-default u-text-palette-2-dark-1 u-text-2">
+                        <ul>
+                            {{form.cpf_cnpj.errors}}
+                        </ul>
+                    </small>
+
+                    <div class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.email.label}}</h6>
+                        {{form.email}}
+                    </div>
+
+                    <div class="div_endereco u-form-group-1">
+                        <h6 class="u-align-left">{{form.street.label}}</h6>
+                        {{form.street}}
+                    </div>
+
+                    <div class="u-form-select-wrapper">
+                        <h6 class="u-align-left">{{form.state.label}}</h6>
+                        {{form.state}}
+                        <br>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+
+                    <div id="div_cpf_cnpj" class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.description.label}}</h6>
+                        {{form.description}}
+                    </div>
+
+                    <div class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.password1.label}}</h6>
+                        {{form.password1}}
+                    </div>
+                    <small class="u-align-left u-text u-text-default u-text-palette-3-dark-1 u-text-2">
+                        <ul>
+                            <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
+                            <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                            <li>Sua senha não pode ser uma senha comumente utilizada.</li>
+                            <li>Sua senha não pode ser inteiramente numérica.</li>
+                        </ul>
+                    </small>
+
+                    <div class="u-form-group u-form-group-1">
+                        <h6 class="u-align-left">{{form.password2.label}}</h6>
+                        {{form.password2}}
+                    </div>
+                    <br>
+
+                    <div class="u-clearfix u-palette-1-light-3 u-layout-wrap ">
+                        <div class="u-layout">
+                            <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                                    <img class="u-image" src="/static/images/register_terms_icon.svg" alt="">
+                                    <h3>Termo de Responsabilidade</h3>
+                                        <br>
+                                        <small>
+                                            Sobre as Informações Pessoais coletadas e em acordo com a LGPD:
+                                            <ul class="u-align-left">
+                                            <li>As informações pessoais coletadas são necessárias para o uso em nosso sistema e a possibilidade de unir Doadores e Beneficiários.</li><br>
+                                            <li>As informações pessoais coletadas serão armazenadas nos servidores da DoaAção enquanto o usuário possuir o perfil ativo ou até o encerramento das atividades do sistema.</li><br>
+                                            <li>Os usuários poderão excluir seu perfil a qualquer momento, através de botão acessível em sua área logada.</li><br>
+                                            <li>As informações pessoais coletadas não serão vendidas/entregues à terceiros.</li><br>
+                                            <li>O usuário (Beneficiário ou Doador) entende que seus dados estarão disponíveis de forma pública, isentando o site DoaAção de quaisquer problemas decorrentes disso.</li>
+                                        </ul></small>
+                                        <br>
+                                        <div class="u-form-checkbox u-form-group u-form-group-2 u-align-center">
+                                            <input type="checkbox" id="" name="concordo" value="" required>
+                                            <label for="concordo" class="u-label"><strong>Estou de Acordo</strong></label>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="u-align-center u-form-group u-form-submit">
+                        <button type="submit"
+                            class="u-btn u-btn-submit u-button-style u-radius-7 u-btn-1">CADASTRAR</button>
+                    </div>
+</form>
+<br>
+<h6 class="u-align-center">Já possui cadastro no DoaAção?</h6>
+<a href="{% url 'accounts:login' %}"
+    class="u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-palette-2-base u-btn u-button-style u-hover-none u-login-control u-login-forgot-password u-none u-text-black u-text-hover-palette-2-base u-btn-2">
+    CLIQUE AQUI
+</a>
+
+</div>
+<br>
+</div>
+<br>
+</section>
+</form>
+
+
+{% endblock %}
